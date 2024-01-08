@@ -13,6 +13,7 @@ var arView = ARView(frame: .zero)
 
 struct ContentView : View {
     @State var obj: String
+    
     var body: some View {
         ZStack{
             ARViewContainer(obj: obj)
@@ -110,8 +111,11 @@ struct ARViewContainer: UIViewRepresentable{
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
+    //@StateObject private var dataController = DataController()
+    
     static var previews: some View {
         ContentView(obj: "Crush")
+            //.environment(\.managedObjectContext, dataController.container.viewContext)
     }
 }
 #endif

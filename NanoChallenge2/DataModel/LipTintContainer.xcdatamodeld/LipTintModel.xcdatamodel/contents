@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="22522" systemVersion="23C71" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithSwiftData="YES" userDefinedModelVersionIdentifier="">
+    <entity name="BrandEntity" representedClassName="BrandEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="brand_name" optional="YES" attributeType="String" defaultValueString="defaultString"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <relationship name="lip_tints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LipTintEntity" inverseName="brand" inverseEntity="LipTintEntity"/>
+    </entity>
+    <entity name="ColorDetailEntity" representedClassName="ColorDetailEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="blue" optional="YES" attributeType="Integer 64" minValueString="0" maxValueString="255" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="color_name" optional="YES" attributeType="String" defaultValueString="defaultString"/>
+        <attribute name="green" optional="YES" attributeType="Integer 64" minValueString="0" maxValueString="255" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="red" optional="YES" attributeType="Integer 64" minValueString="0" maxValueString="255" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="lip_tint" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="LipTintEntity" inverseName="color_details" inverseEntity="LipTintEntity"/>
+    </entity>
+    <entity name="HistoryEntity" representedClassName="HistoryEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="lip_tints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LipTintEntity" inverseName="history" inverseEntity="LipTintEntity"/>
+    </entity>
+    <entity name="LipTintEntity" representedClassName="LipTintEntity" syncable="YES" codeGenerationType="class">
+        <relationship name="brand" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BrandEntity" inverseName="lip_tints" inverseEntity="BrandEntity"/>
+        <relationship name="color_details" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ColorDetailEntity" inverseName="lip_tint" inverseEntity="ColorDetailEntity"/>
+        <relationship name="history" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="HistoryEntity" inverseName="lip_tints" inverseEntity="HistoryEntity"/>
+    </entity>
+</model>
