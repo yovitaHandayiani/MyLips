@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9B63FEB92B4BD90900C507D4 /* LipTintModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9B63FEB72B4BD90900C507D4 /* LipTintModel.xcdatamodeld */; };
+		9B63FEBB2B4BDEF900C507D4 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B63FEBA2B4BDEF900C507D4 /* DataController.swift */; };
 		9BC6AB092A15ED04008D0BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB082A15ED04008D0BD1 /* AppDelegate.swift */; };
 		9BC6AB0B2A15ED04008D0BD1 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB0A2A15ED04008D0BD1 /* ContentView.swift */; };
 		9BC6AB0D2A15ED04008D0BD1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB0C2A15ED04008D0BD1 /* Experience.rcproject */; };
@@ -18,6 +20,8 @@
 
 /* Begin PBXFileReference section */
 		9B3BED422A1B80F800EAC1CC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		9B63FEB82B4BD90900C507D4 /* LipTintModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = LipTintModel.xcdatamodel; sourceTree = "<group>"; };
+		9B63FEBA2B4BDEF900C507D4 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		9BC6AB052A15ED04008D0BD1 /* NanoChallenge2.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NanoChallenge2.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BC6AB082A15ED04008D0BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9BC6AB0A2A15ED04008D0BD1 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -39,6 +43,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9B63FEB62B4BD6BE00C507D4 /* DataModel */ = {
+			isa = PBXGroup;
+			children = (
+				9B63FEB72B4BD90900C507D4 /* LipTintModel.xcdatamodeld */,
+				9B63FEBA2B4BDEF900C507D4 /* DataController.swift */,
+			);
+			path = DataModel;
+			sourceTree = "<group>";
+		};
 		9BC6AAFC2A15ED04008D0BD1 = {
 			isa = PBXGroup;
 			children = (
@@ -62,6 +75,7 @@
 				9BC6AB192A162F49008D0BD1 /* View */,
 				9BC6AB082A15ED04008D0BD1 /* AppDelegate.swift */,
 				9BC6AB0A2A15ED04008D0BD1 /* ContentView.swift */,
+				9B63FEB62B4BD6BE00C507D4 /* DataModel */,
 				9BC6AB0C2A15ED04008D0BD1 /* Experience.rcproject */,
 				9BC6AB0E2A15ED05008D0BD1 /* Assets.xcassets */,
 				9BC6AB102A15ED05008D0BD1 /* Preview Content */,
@@ -156,10 +170,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B63FEBB2B4BDEF900C507D4 /* DataController.swift in Sources */,
 				9BC6AB1D2A175BA1008D0BD1 /* ColorPage.swift in Sources */,
 				9BC6AB0B2A15ED04008D0BD1 /* ContentView.swift in Sources */,
 				9BC6AB1F2A19FDEA008D0BD1 /* ColorButton.swift in Sources */,
 				9BC6AB092A15ED04008D0BD1 /* AppDelegate.swift in Sources */,
+				9B63FEB92B4BD90900C507D4 /* LipTintModel.xcdatamodeld in Sources */,
 				9BC6AB0D2A15ED04008D0BD1 /* Experience.rcproject in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -369,6 +385,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9B63FEB72B4BD90900C507D4 /* LipTintModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9B63FEB82B4BD90900C507D4 /* LipTintModel.xcdatamodel */,
+			);
+			currentVersion = 9B63FEB82B4BD90900C507D4 /* LipTintModel.xcdatamodel */;
+			path = LipTintModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9BC6AAFD2A15ED04008D0BD1 /* Project object */;
 }
