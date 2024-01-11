@@ -10,6 +10,7 @@ import CoreData
 
 class DataViewModel: ObservableObject {
     let manager = DataManager.instance
+    //let entity: LipTintEntity
     @Published var brand: [BrandEntity] = []
     @Published var colorDetail: [ColorDetailEntity] = []
     @Published var lipTint: [LipTintEntity] = []
@@ -18,30 +19,56 @@ class DataViewModel: ObservableObject {
     init(){
         getBrand()
         getColorDetail()
+        getLipTint()
+        getHistory()
     }
     
     func clearHistory(){
+        for item in history {
+            manager.context.delete(item)
+        }
         history.removeAll()
-        manager.context.delete(history)
         save()
     }
     
-    func addHistory(){
+    func addHistory(lipTint: LipTintEntity){
+        let newHistory = HistoryEntity(context: manager.context)
+        newHistory.date = Date()
         
+        // Create an NSSet containing the lipTint object
+        let lipTintsSet: NSSet = NSSet(object: lipTint)
+        
+        newHistory.lip_tints = lipTintsSet
+        save()
     }
     
     func getHistory(){
+        let request = NSFetchRequest<HistoryEntity>(entityName: "HistoryEntity")
         
+        do{
+            history = try manager.context.fetch(request)
+        }catch let error {
+            print("Failed to fetch data || \(error.localizedDescription)")
+        }
+        if(history.isEmpty){
+            print("No data recorded.")
+        }
     }
     
     func addLipTint(lip_tint_name: String, start: Int, end: Int, brandPosition: Int){
         let newLipTint = LipTintEntity(context: manager.context)
         newLipTint.lip_tint_name = lip_tint_name
+        newLipTint.favourite = false
         for i in start...end {
             newLipTint.color_details = [colorDetail[i]]
         }
         newLipTint.brand = brand[brandPosition]
         //isi relationship
+        save()
+    }
+    
+    func editLipTint_addToFavourite(lipTint: LipTintEntity){
+        lipTint.favourite = true
         save()
     }
     
@@ -59,18 +86,18 @@ class DataViewModel: ObservableObject {
             addLipTint(lip_tint_name: "Dear My Wish Lips Talk", start: 14, end: 23, brandPosition: 1)
         }
         
-//        newLipTint.lip_tint_name = "Lip Totem Tint"
-//        for i in 0...13 {
-//            newLipTint.color_details = [colorDetail[i]]
-//        }
-//        newLipTint.brand = brand[0]
-//       
-//        newLipTint.lip_tint_name = "Dear My Wish Lips Talk"
-//        for i in 14...23{
-//            newLipTint.color_details = [colorDetail[i]]
-//        }
-//        newLipTint.brand = brand[1]
-       
+        //        newLipTint.lip_tint_name = "Lip Totem Tint"
+        //        for i in 0...13 {
+        //            newLipTint.color_details = [colorDetail[i]]
+        //        }
+        //        newLipTint.brand = brand[0]
+        //
+        //        newLipTint.lip_tint_name = "Dear My Wish Lips Talk"
+        //        for i in 14...23{
+        //            newLipTint.color_details = [colorDetail[i]]
+        //        }
+        //        newLipTint.brand = brand[1]
+        
     }
     
     func addBrand(brand_name: String){

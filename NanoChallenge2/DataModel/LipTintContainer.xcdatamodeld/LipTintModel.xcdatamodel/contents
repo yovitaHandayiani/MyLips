@@ -18,6 +18,7 @@
         <relationship name="lip_tints" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="LipTintEntity" inverseName="history" inverseEntity="LipTintEntity"/>
     </entity>
     <entity name="LipTintEntity" representedClassName="LipTintEntity" syncable="YES" codeGenerationType="class">
+        <attribute name="favourite" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="lip_tint_name" optional="YES" attributeType="String" defaultValueString="defaultString"/>
         <relationship name="brand" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="BrandEntity" inverseName="lip_tints" inverseEntity="BrandEntity"/>
         <relationship name="color_details" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ColorDetailEntity" inverseName="lip_tint" inverseEntity="ColorDetailEntity"/>

@@ -17,6 +17,7 @@
 		9BC6AB122A15ED05008D0BD1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC6AB112A15ED05008D0BD1 /* Preview Assets.xcassets */; };
 		9BC6AB1D2A175BA1008D0BD1 /* ColorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB1C2A175BA1008D0BD1 /* ColorPage.swift */; };
 		9BC6AB1F2A19FDEA008D0BD1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */; };
+		9BD72AF32B4FF37400B9F3E3 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD72AF22B4FF37400B9F3E3 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		9BC6AB112A15ED05008D0BD1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BC6AB1C2A175BA1008D0BD1 /* ColorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPage.swift; sourceTree = "<group>"; };
 		9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
+		9BD72AF22B4FF37400B9F3E3 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				9BC6AB1C2A175BA1008D0BD1 /* ColorPage.swift */,
 				9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */,
+				9BD72AF22B4FF37400B9F3E3 /* Store.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -176,6 +179,7 @@
 				9B63FEBB2B4BDEF900C507D4 /* DataViewModel.swift in Sources */,
 				9B8AA76D2B4C4CFE0090B171 /* DataManager.swift in Sources */,
 				9BC6AB1D2A175BA1008D0BD1 /* ColorPage.swift in Sources */,
+				9BD72AF32B4FF37400B9F3E3 /* Store.swift in Sources */,
 				9BC6AB0B2A15ED04008D0BD1 /* ContentView.swift in Sources */,
 				9BC6AB1F2A19FDEA008D0BD1 /* ColorButton.swift in Sources */,
 				9BC6AB092A15ED04008D0BD1 /* AppDelegate.swift in Sources */,

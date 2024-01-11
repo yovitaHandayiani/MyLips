@@ -18,6 +18,7 @@ struct ColorPage: View {
                     .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.main.bounds.width * 0.075, trailing: 0))
                 
                 //BRAND #1
+                //\(entity.brand?.brand_name ?? "")
                 VStack(alignment: .leading){
                     Text("OMBRELLA Lip Totem Tint")
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.main.bounds.width * 0.02, trailing: 0))
