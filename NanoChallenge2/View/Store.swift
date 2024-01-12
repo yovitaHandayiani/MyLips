@@ -2,17 +2,67 @@
 //  Store.swift
 //  NanoChallenge2
 //
-//  Created by Yovita Handayiani on 11/01/24.
+//  Created by Yovita Handayiani on 12/01/24.
 //
 
 import SwiftUI
+import SwiftUI
 
 struct Store: View {
+    @StateObject var datavm = DataViewModel()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            ScrollView {
+                VStack() {
+                    ScrollView(.horizontal, showsIndicators: true, content: {
+                        HStack(alignment: .top){
+                            ForEach(datavm.colorDetail) { lipTint in
+                                lipTintView(entity: lipTint)
+                            }
+                        }
+                    })
+                }
+                .padding()
+            }
+            .navigationBarTitle("Store")
+            //.navigationBarTitle("Store", displayMode: .inline)
+        }
     }
 }
 
+struct lipTintView: View{
+    //let entity: LipTintEntity
+    let entity: ColorDetailEntity
+    
+    var body: some View{
+        VStack{
+            //Text("\(entity.lip_tint_name ?? "")")
+            
+//            if let brands = entity.brand?.allObjects as? [BrandEntity]{
+//                ForEach(brands){ brand in
+//                    Text(brand.brand_name ?? "")
+//
+//                }
+//            }
+            
+//            if let colors = entity.color_details?.allObjects as? [ColorDetailEntity]{
+//                ForEach(colors){ color in
+//                    Text(color.color_name ?? "")
+//                }
+//                
+//            }
+            
+            ForEach(entity, id: \.self){ data in
+                Text(data.description.count)
+            }
+            
+            
+            //if
+        }
+    }
+}
+                               
 #Preview {
     Store()
 }
