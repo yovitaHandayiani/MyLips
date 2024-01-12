@@ -55,13 +55,14 @@ class DataViewModel: ObservableObject {
         }
     }
     
-    func addLipTint(lip_tint_name: String, start: Int, end: Int, brandPosition: Int){
+    func addLipTint(lip_tint_name: String, i: Int, brandPosition: Int){
         let newLipTint = LipTintEntity(context: manager.context)
         newLipTint.lip_tint_name = lip_tint_name
         newLipTint.favourite = false
-        for i in start...end {
-            newLipTint.color_details = [colorDetail[i]]
-        }
+//        for i in start...end {
+//            newLipTint.color_details = [colorDetail[i]]
+//        }
+        newLipTint.addToColor_details(colorDetail[i])
         newLipTint.brand = brand[brandPosition]
         //isi relationship
         save()
@@ -82,8 +83,22 @@ class DataViewModel: ObservableObject {
         }
         
         if(lipTint.isEmpty){
-            addLipTint(lip_tint_name: "Lip Totem Tint", start: 0, end: 13, brandPosition: 0)
-            addLipTint(lip_tint_name: "Dear My Wish Lips Talk", start: 14, end: 23, brandPosition: 1)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 0, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 1, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 2, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 3, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 4, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 5, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 6, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 7, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 8, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 9, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 10, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 11, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 12, brandPosition: 0)
+            addLipTint(lip_tint_name: "Lip Totem Tint", i: 13, brandPosition: 0)
+//            addLipTint(lip_tint_name: "Lip Totem Tint", start: 0, end: 13, brandPosition: 0)
+//            addLipTint(lip_tint_name: "Dear My Wish Lips Talk", start: 14, end: 23, brandPosition: 1)
         }
         
         //        newLipTint.lip_tint_name = "Lip Totem Tint"
@@ -170,7 +185,16 @@ class DataViewModel: ObservableObject {
     }
     
     func save(){
-        manager.saveData()
+        colorDetail.removeAll()
+        brand.removeAll()
+        lipTint.removeAll()
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0){
+            self.manager.saveData()
+//            self.getColorDetail()
+//            self.getBrand()
+//            self.getLipTint()
+        }
     }
     
 }

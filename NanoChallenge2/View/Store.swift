@@ -17,13 +17,23 @@ struct Store: View {
                 VStack() {
                     ScrollView(.horizontal, showsIndicators: true, content: {
                         HStack(alignment: .top){
-                            ForEach(datavm.colorDetail) { lipTint in
+                            ForEach(datavm.lipTint) { lipTint in
                                 lipTintView(entity: lipTint)
                             }
                         }
                     })
                 }
                 .padding()
+                .onAppear{
+                    datavm.save()
+                    datavm.getColorDetail()
+                    datavm.getBrand()
+                    datavm.getLipTint()
+                    
+//                    datavm.lipTint = []
+//                    datavm.colorDetail = []
+//                    datavm.brand = []
+                }
             }
             .navigationBarTitle("Store")
             //.navigationBarTitle("Store", displayMode: .inline)
@@ -32,11 +42,10 @@ struct Store: View {
 }
 
 struct lipTintView: View{
-    //let entity: LipTintEntity
-    let entity: ColorDetailEntity
+    let entity: LipTintEntity
     
     var body: some View{
-        VStack{
+        VStack(){
             //Text("\(entity.lip_tint_name ?? "")")
             
 //            if let brands = entity.brand?.allObjects as? [BrandEntity]{
@@ -46,17 +55,12 @@ struct lipTintView: View{
 //                }
 //            }
             
-//            if let colors = entity.color_details?.allObjects as? [ColorDetailEntity]{
-//                ForEach(colors){ color in
-//                    Text(color.color_name ?? "")
-//                }
-//                
-//            }
-            
-            ForEach(entity, id: \.self){ data in
-                Text(data.description.count)
+            if let colors = entity.color_details?.allObjects as? [ColorDetailEntity]{
+                ForEach(colors){ color in
+                    Text(color.color_name ?? "")
+                }
+                
             }
-            
             
             //if
         }
