@@ -60,9 +60,9 @@ class DataViewModel: ObservableObject {
         newLipTint.lip_tint_name = lip_tint_name
         newLipTint.favourite = false
 //        for i in start...end {
-//            newLipTint.color_details = [colorDetail[i]]
+            newLipTint.color_details = [colorDetail[i]]
 //        }
-        newLipTint.addToColor_details(colorDetail[i])
+        //newLipTint.addToColor_details(colorDetail[i])
         newLipTint.brand = brand[brandPosition]
         //isi relationship
         save()

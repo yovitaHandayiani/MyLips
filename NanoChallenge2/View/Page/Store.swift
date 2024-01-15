@@ -46,7 +46,7 @@ struct lipTintView: View{
     
     var body: some View{
         VStack(){
-            //Text("\(entity.lip_tint_name ?? "")")
+            Text("\(entity.lip_tint_name ?? "")")
             
 //            if let brands = entity.brand?.allObjects as? [BrandEntity]{
 //                ForEach(brands){ brand in

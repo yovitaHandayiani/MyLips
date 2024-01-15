@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct TabBar: View {
     @State private var selectedTab = 0
     
@@ -14,39 +15,26 @@ struct TabBar: View {
         TabView(selection: $selectedTab) {
                     Store()
                         .tabItem {
-                            Image(systemName: "1.circle")
-                            Text("First")
+                            Image(systemName: "swatchpalette.fill")
+                            Text("Store")
                         }
                         .tag(0)
                     
-                    SecondView()
+                    Favourite()
                         .tabItem {
-                            Image(systemName: "2.circle")
-                            Text("Second")
+                            Image(systemName: "heart.fill").symbolRenderingMode(.palette)
+                                .foregroundStyle(.pink)
+                            Text("Favourite")
                         }
                         .tag(1)
                     
-                    ThirdView()
+                    History()
                         .tabItem {
-                            Image(systemName: "3.circle")
-                            Text("Third")
+                            Image(systemName: "clock.arrow.circlepath")
+                            Text("History")
                         }
                         .tag(2)
                 }
-    }
-}
-
-struct SecondView: View {
-    var body: some View {
-        Text("Second View")
-            .padding()
-    }
-}
-
-struct ThirdView: View {
-    var body: some View {
-        Text("Third View")
-            .padding()
     }
 }
 

@@ -24,60 +24,60 @@ struct ColorPage: View {
                         .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.main.bounds.width * 0.02, trailing: 0))
                     HStack(alignment: .top){
                         NavigationLink(destination: ContentView(obj: "Crush")){
-                            ColorButton(redd : 208, greenn: 80, bluee: 74, textt: "Crush", colour: "Black")
+                            ColorButton(redd : 208, greenn: 80, bluee: 74, textt: "Crush")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Soul")){ColorButton(redd : 211, greenn: 83, bluee: 67, textt: "Soul", colour: "Black")
+                                        ContentView(obj: "Soul")){ColorButton(redd : 211, greenn: 83, bluee: 67, textt: "Soul")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Bond")){ColorButton(redd : 239, greenn: 115, bluee: 86, textt: "Bond", colour: "Black")
+                                        ContentView(obj: "Bond")){ColorButton(redd : 239, greenn: 115, bluee: 86, textt: "Bond")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Hottie")){ColorButton(redd : 210, greenn: 31, bluee: 67, textt: "Hottie", colour: "Black")
+                                        ContentView(obj: "Hottie")){ColorButton(redd : 210, greenn: 31, bluee: 67, textt: "Hottie")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Underground")){ColorButton(redd : 197, greenn: 119, bluee: 107, textt: "Under\nground", colour: "Black")
+                                        ContentView(obj: "Underground")){ColorButton(redd : 197, greenn: 119, bluee: 107, textt: "Under\nground")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Undercover")){ColorButton(redd : 173, greenn: 87, bluee: 90, textt: "Under\ncover", colour: "Black")
+                                        ContentView(obj: "Undercover")){ColorButton(redd : 173, greenn: 87, bluee: 90, textt: "Under\ncover")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "High")){ColorButton(redd : 225, greenn: 15, bluee: 74, textt: "High", colour: "Black")
+                                        ContentView(obj: "High")){ColorButton(redd : 225, greenn: 15, bluee: 74, textt: "High")
                         }                    }
                     
                     HStack(alignment: .top){
                         NavigationLink(destination:
-                                        ContentView(obj: "Doze")){ColorButton(redd : 191, greenn: 49, bluee: 39, textt: "Doze", colour: "Black")
+                                        ContentView(obj: "Doze")){ColorButton(redd : 191, greenn: 49, bluee: 39, textt: "Doze")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "HAYG")){ColorButton(redd : 183, greenn: 111, bluee: 120, textt: "HAYG", colour: "Black")
+                                        ContentView(obj: "HAYG")){ColorButton(redd : 183, greenn: 111, bluee: 120, textt: "HAYG")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Lurve")){ColorButton(redd : 172, greenn: 28, bluee: 64, textt: "Lurve", colour: "Black")
+                                        ContentView(obj: "Lurve")){ColorButton(redd : 172, greenn: 28, bluee: 64, textt: "Lurve")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Renee")){ColorButton(redd : 204, greenn: 16, bluee: 33, textt: "Renee", colour: "Black")
+                                        ContentView(obj: "Renee")){ColorButton(redd : 204, greenn: 16, bluee: 33, textt: "Renee")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "SAVAGE")){ColorButton(redd : 193, greenn: 97, bluee: 93, textt: "SAVAGE", colour: "Black")
+                                        ContentView(obj: "SAVAGE")){ColorButton(redd : 193, greenn: 97, bluee: 93, textt: "SAVAGE")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "WUCU")){ColorButton(redd : 167, greenn: 27, bluee: 20, textt: "WUCU", colour: "Black")
+                                        ContentView(obj: "WUCU")){ColorButton(redd : 167, greenn: 27, bluee: 20, textt: "WUCU")
                         }
                         
                         NavigationLink(destination:
-                                        ContentView(obj: "Nikola")){ColorButton(redd : 201, greenn: 92, bluee: 92, textt: "Nikola", colour: "Black")
+                                        ContentView(obj: "Nikola")){ColorButton(redd : 201, greenn: 92, bluee: 92, textt: "Nikola")
                         }
                         
                     }
@@ -92,23 +92,23 @@ struct ColorPage: View {
                     HStack(alignment: .top){
                         NavigationLink(destination:
                                         ContentView(obj: "pitApat")){
-                            ColorButton(redd : 241, greenn: 62, bluee: 92, textt: "First\nKiss", colour: "Black")
+                            ColorButton(redd : 241, greenn: 62, bluee: 92, textt: "First\nKiss")
                         }
                         
                         NavigationLink(destination:
                                         ContentView(obj: "Breaking")){
-                            ColorButton(redd : 165, greenn: 27, bluee: 34, textt: "Breaking\nOut", colour: "Black")
+                            ColorButton(redd : 165, greenn: 27, bluee: 34, textt: "Breaking\nOut")
                         }
                         
                         NavigationLink(destination:
                                         ContentView(obj: "Burgundy")){
-                            ColorButton(redd : 100, greenn: 13, bluee: 34, textt: "Run\nAway", colour: "Black")
+                            ColorButton(redd : 100, greenn: 13, bluee: 34, textt: "Run\nAway")
                         }
                         
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Secret\nDate", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Secret\nDate")
                         }.alert("Subscribe MyLips Pro!", isPresented: $showingAlert) {
                             Button("OK", role: .cancel) { }
                         }
@@ -116,17 +116,17 @@ struct ColorPage: View {
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Sexy\nStar", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Sexy\nStar")
                         }
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "City\nGirl", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "City\nGirl")
                         }
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Hidden\nCoral", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Hidden\nCoral")
                         }
                     }
                     
@@ -134,105 +134,24 @@ struct ColorPage: View {
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Dreamy\nPropose", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Dreamy\nPropose")
                         }
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Chic\nBeige", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Chic\nBeige")
                         }
                         
                         Button{
                             showingAlert = true
                         }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Enchanted\nGoddess", colour: "hidden")
+                            ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Enchanted\nGoddess")
                         }
                     }
                     
                 }
                 .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.main.bounds.width * 0.07, trailing: 0))
                 
-                //BRAND #3
-                VStack(alignment: .leading){
-                    Text("DIOR Addict Lip Glow Lip Balm")
-                        .padding(EdgeInsets(top: 0, leading: 0, bottom: UIScreen.main.bounds.width * 0.02, trailing: 0))
-                    
-                    HStack(alignment: .top){
-                        Button{
-                            showingAlert = true
-                        } label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Universal\n Clear", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Dior 8", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Straw-\nberry", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Pink", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Coral", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Berry", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Rasp-\nberry", colour: "hidden")
-                        }
-                    }
-        
-                    HStack(alignment: .top){
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Ultra\nPink", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Rose-\nwood", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Cherry", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Ultra\nCoral", colour: "hidden")
-                        }
-                        
-                        Button{
-                            showingAlert = true
-                        }label: {
-                            ColorButton(redd : 151, greenn: 151, bluee: 151, textt: "Seoul\nScarlet", colour: "hidden")
-                        }
-                    }
-                }
             }
         }
     }
