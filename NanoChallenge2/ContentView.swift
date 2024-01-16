@@ -21,24 +21,48 @@ struct ContentView : View {
             
             VStack{
                 Spacer()
-                Button{
-                    arView.snapshot(saveToHDR: false){ (image) in
-                        
-                        //compress image
-                        let cImage = UIImage(data: (image?.pngData())!)
-                        
-                        //save to gallery
-                        UIImageWriteToSavedPhotosAlbum(cImage!, nil, nil, nil)
+                HStack{
+                    Button{
+                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
+                    }label: {
+                        Image(systemName: "heart")
+                            .resizable()
+                            .foregroundStyle(.pink)
+                            .frame(width: 22, height: 20)
                     }
-                }label: {
-                    Circle()                        .strokeBorder(Color.black,lineWidth: 2)
-                        .background(Circle().foregroundColor(Color.white))
-                        .frame(width: 80, height: 80)
-                        .overlay(
-                            RoundedRectangle(cornerRadius: 100)
-                                .stroke(Color.white, lineWidth: 2)
-                        )
+                    Spacer()
+                    Button{
+                        arView.snapshot(saveToHDR: false){ (image) in
+                            
+                            //compress image
+                            let cImage = UIImage(data: (image?.pngData())!)
+                            
+                            //save to gallery
+                            UIImageWriteToSavedPhotosAlbum(cImage!, nil, nil, nil)
+                        }
+                    }label: {
+                        Circle()                        .strokeBorder(Color.black,lineWidth: 2)
+                            .background(Circle().foregroundColor(Color.white))
+                            .frame(width: 80, height: 80)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 100)
+                                    .stroke(Color.white, lineWidth: 2)
+                            )
+                    }
+                    Spacer()
+                    Button{
+                        
+                    }label: {
+                        Image(systemName: "heart")
+                            .resizable()
+                            .foregroundStyle(.pink)
+                            .frame(width: 22, height: 20)
+                    }
                 }
+                .ignoresSafeArea()
+                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
+                .padding(30)
+                .background(Color(.blue))
             }
         }
         
