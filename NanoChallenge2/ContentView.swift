@@ -19,16 +19,27 @@ struct ContentView : View {
             ARViewContainer(obj: obj)
                 .edgesIgnoringSafeArea(.all)
             
+            VStack(alignment: .leading){
+//                call color button list
+            }
+            .padding(10)
+            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
+            //.background(Color(.red))
+            
             VStack{
+                Color.blue.ignoresSafeArea().frame(height: 44)
                 Spacer()
                 HStack{
                     Button{
                         UIApplication.shared.open(URL(string:"photos-redirect://")!)
                     }label: {
-                        Image(systemName: "heart")
+                        Image(systemName: "photo.fill.on.rectangle.fill")
                             .resizable()
                             .foregroundStyle(.pink)
                             .frame(width: 22, height: 20)
+                            .padding(15)
+                            .background(Color.gray)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     }
                     Spacer()
                     Button{
@@ -53,10 +64,25 @@ struct ContentView : View {
                     Button{
                         
                     }label: {
+//                        if(fav == true){
+//                            Image(systemName: "heart.fill")
+//                                .resizable()
+//                                .foregroundStyle(.pink)
+//                                .frame(width: 22, height: 20)
+//                        }else{
+//                            Image(systemName: "heart")
+//                                .resizable()
+//                                .foregroundStyle(.pink)
+//                                .frame(width: 22, height: 20)
+//                        }
                         Image(systemName: "heart")
                             .resizable()
                             .foregroundStyle(.pink)
                             .frame(width: 22, height: 20)
+                            .padding(15)
+                            .background(Color.gray)
+                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+                            
                     }
                 }
                 .ignoresSafeArea()
