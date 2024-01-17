@@ -27,7 +27,7 @@ struct ContentView : View {
             //.background(Color(.red))
             
             VStack{
-                Color.blue.ignoresSafeArea().frame(height: 44)
+                Color(red: 31/255, green: 31/255, blue: 31/255).ignoresSafeArea().frame(height: 44)
                 Spacer()
                 HStack{
                     Button{
@@ -36,9 +36,9 @@ struct ContentView : View {
                         Image(systemName: "photo.fill.on.rectangle.fill")
                             .resizable()
                             .foregroundStyle(.pink)
-                            .frame(width: 22, height: 20)
+                            .frame(width: 26, height: 24)
                             .padding(15)
-                            .background(Color.gray)
+                            .background(Color(red: 40/255, green: 40/255, blue: 40/255))
                             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                     }
                     Spacer()
@@ -52,12 +52,12 @@ struct ContentView : View {
                             UIImageWriteToSavedPhotosAlbum(cImage!, nil, nil, nil)
                         }
                     }label: {
-                        Circle()                        .strokeBorder(Color.black,lineWidth: 2)
+                        Circle()                        .strokeBorder(Color.black,lineWidth: 5)
                             .background(Circle().foregroundColor(Color.white))
                             .frame(width: 80, height: 80)
                             .overlay(
                                 RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color.white, lineWidth: 2)
+                                    .stroke(Color.white, lineWidth: 5)
                             )
                     }
                     Spacer()
@@ -78,9 +78,9 @@ struct ContentView : View {
                         Image(systemName: "heart")
                             .resizable()
                             .foregroundStyle(.pink)
-                            .frame(width: 22, height: 20)
+                            .frame(width: 26, height: 24)
                             .padding(15)
-                            .background(Color.gray)
+                            .background(Color(red: 40/255, green: 40/255, blue: 40/255))
                             .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
                             
                     }
@@ -88,7 +88,7 @@ struct ContentView : View {
                 .ignoresSafeArea()
                 .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
                 .padding(30)
-                .background(Color(.blue))
+                .background(Color(red: 31/255, green: 31/255, blue: 31/255))
             }
         }
         
@@ -161,11 +161,8 @@ struct ARViewContainer: UIViewRepresentable{
 
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
-    //@StateObject private var dataController = DataController()
-    
     static var previews: some View {
         ContentView(obj: "Crush")
-            //.environment(\.managedObjectContext, dataController.container.viewContext)
     }
 }
 #endif
