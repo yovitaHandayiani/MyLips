@@ -15,19 +15,17 @@ struct ContentView : View {
     @State var obj: String
     
     var body: some View {
-        ZStack{
+        ZStack(alignment: .top){
             ARViewContainer(obj: obj)
                 .edgesIgnoringSafeArea(.all)
-            
             VStack(alignment: .leading){
 //                call color button list
             }
             .padding(10)
             .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
             //.background(Color(.red))
-            
             VStack{
-                Color(red: 31/255, green: 31/255, blue: 31/255).ignoresSafeArea().frame(height: 44)
+                Color(red: 31/255, green: 31/255, blue: 31/255).ignoresSafeArea().frame(height: 0)
                 Spacer()
                 HStack{
                     Button{

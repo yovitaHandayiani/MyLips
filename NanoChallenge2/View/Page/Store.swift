@@ -9,8 +9,9 @@ import SwiftUI
 import SwiftUI
 
 struct Store: View {
-    @StateObject var datavm = DataViewModel()
+//    @StateObject var datavm = DataViewModel()
     @State private var search: String = ""
+    @State private var showingAlert = false
     
     var body: some View {
         
@@ -28,11 +29,21 @@ struct Store: View {
                 .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
                 
                 VStack(alignment: .leading){
+                    if(!search.isEmpty){
+                        ForEach(ListOfSearch){ ListOfSearch in
+                            if(ListOfSearch.name.lowercased().contains(search.lowercased())){
+                                
+                            }
+                        }
+                    }
+                    
                     Text(OMBRELLA[0].branNtype)
                     ScrollView(.horizontal, showsIndicators: false, content: {
                         HStack(alignment: .top){
                             ForEach(OMBRELLA){OMBRELLA in
-                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                NavigationLink(destination: ContentView(obj: OMBRELLA.name)){
+                                    ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                }
                             }.padding(2.5)
 //                            ForEach(datavm.lipTint) { lipTint in
 //                                lipTintView(entity: lipTint)
@@ -48,8 +59,22 @@ struct Store: View {
                     ScrollView(.horizontal, showsIndicators: false, content: {
                         HStack(alignment: .top){
                             ForEach(EtudeHouse){EtudeHouse in
-                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                
+                                NavigationLink(destination: ContentView(obj: EtudeHouse.name)){
+                                    ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                }
                             }.padding(2.5)
+                            ForEach(notAvai){notAvai in
+                                Button{
+                                    showingAlert = true
+                                }label: {
+                                    ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name)
+                                }.alert("Subscribe MyLips Pro", isPresented: $showingAlert) {
+                                    Button("OK", role: .cancel) { }
+                                }message:{
+                                    Text("Subscribe MyLips Pro to explore more colors.")
+                                }
+                            }
                         }.padding(17)
                     }).overlay(
                         RoundedRectangle(cornerRadius: 12)
@@ -75,31 +100,31 @@ struct Store: View {
     }
 }
 
-struct lipTintView: View{
-    let entity: LipTintEntity
-    
-    var body: some View{
-        VStack(){
-            Text("\(entity.lip_tint_name ?? "")")
-            
-//            if let brands = entity.brand?.allObjects as? [BrandEntity]{
-//                ForEach(brands){ brand in
-//                    Text(brand.brand_name ?? "")
-//
+//struct lipTintView: View{
+//    let entity: LipTintEntity
+//    
+//    var body: some View{
+//        VStack(){
+//            Text("\(entity.lip_tint_name ?? "")")
+//            
+////            if let brands = entity.brand?.allObjects as? [BrandEntity]{
+////                ForEach(brands){ brand in
+////                    Text(brand.brand_name ?? "")
+////
+////                }
+////            }
+//            
+//            if let colors = entity.color_details?.allObjects as? [ColorDetailEntity]{
+//                ForEach(colors){ color in
+//                    Text(color.color_name ?? "")
 //                }
+//                
 //            }
-            
-            if let colors = entity.color_details?.allObjects as? [ColorDetailEntity]{
-                ForEach(colors){ color in
-                    Text(color.color_name ?? "")
-                }
-                
-            }
-            
-            //if
-        }
-    }
-}
+//            
+//            //if
+//        }
+//    }
+//}
                                
 #Preview {
     Store()
