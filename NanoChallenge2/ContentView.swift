@@ -14,9 +14,7 @@ var arView = ARView(frame: .zero)
 struct ContentView : View {
     @State var obj: String
     @State var brand: String
-    
-    @State var index: Int = 0
-//    @State private var b: String = ""
+    @State var index: Int
     
     var body: some View {
         NavigationView{
@@ -33,6 +31,7 @@ struct ContentView : View {
                                             ARViewContainer(obj: OMBRELLA.name)
                                                 .edgesIgnoringSafeArea(.all)
                                             print(OMBRELLA.name)
+                                            index = OMBRELLA.id
                                         }label: {
                                             ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                         }
@@ -43,6 +42,7 @@ struct ContentView : View {
                                             ARViewContainer(obj: EtudeHouse.name)
                                                 .edgesIgnoringSafeArea(.all)
                                             print(EtudeHouse.name)
+                                            index = EtudeHouse.id
                                         }label: {
                                             ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
                                         }
@@ -94,46 +94,54 @@ struct ContentView : View {
                                 )
                         }
                         Spacer()
-                        ForEach(OMBRELLA){o in
-                            if(o.name.lowercased().contains(obj.lowercased())){
-                               // index = o.id
+                        if(brand=="OMBRELLA"){
+                            Button{
+                                OMBRELLA[index].fav.toggle()
+                                print(OMBRELLA[index].fav)
+                            }label: {
+                                if(OMBRELLA[index].fav == true){
+                                    Image(systemName: "heart.fill")
+                                        .resizable()
+                                        .foregroundStyle(.pink)
+                                        .frame(width: 22, height: 20)
+                                        .padding(15)
+                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                        .clipShape(Circle())
+                                }else if (OMBRELLA[index].fav == false){
+                                    Image(systemName: "heart")
+                                        .resizable()
+                                        .foregroundStyle(.pink)
+                                        .frame(width: 22, height: 20)
+                                        .padding(15)
+                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                        .clipShape(Circle())
+                                }
                                 
                             }
-                            
-                        }
-//                        ForEach(OMBRELLA.indices, id: \.self) { i in
-//                            if(OMBRELLA[i].name.lowercased().contains(obj.lowercased())) {
-//                                //self.index = i
-//                            }
-//                        }
-                        Button{
-                            OMBRELLA[index].fav.toggle()
-                        }label: {
-                            if(OMBRELLA[index].fav == true){
-                                Image(systemName: "heart.fill")
-                                    .resizable()
-                                    .foregroundStyle(.pink)
-                                    .frame(width: 22, height: 20)
-                                    .padding(15)
-                                    .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                    .clipShape(Circle())
-                            }else{
-                                Image(systemName: "heart")
-                                    .resizable()
-                                    .foregroundStyle(.pink)
-                                    .frame(width: 22, height: 20)
-                                    .padding(15)
-                                    .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                    .clipShape(Circle())
+                        }else if(brand=="Etude House"){
+                            Button{
+                                EtudeHouse[index].fav.toggle()
+                                print(EtudeHouse[index].fav)
+                            }label: {
+                                if(EtudeHouse[index].fav == true){
+                                    Image(systemName: "heart.fill")
+                                        .resizable()
+                                        .foregroundStyle(.pink)
+                                        .frame(width: 22, height: 20)
+                                        .padding(15)
+                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                        .clipShape(Circle())
+                                }else if (EtudeHouse[index].fav == false){
+                                    Image(systemName: "heart")
+                                        .resizable()
+                                        .foregroundStyle(.pink)
+                                        .frame(width: 22, height: 20)
+                                        .padding(15)
+                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                        .clipShape(Circle())
+                                }
+                                
                             }
-//                            Image(systemName: "heart")
-//                                .resizable()
-//                                .foregroundStyle(.pink)
-//                                .frame(width: 26, height: 24)
-//                                .padding(15)
-//                                .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-//                                .clipShape(Circle())
-                            
                         }
                     }
                     .ignoresSafeArea()
@@ -214,7 +222,7 @@ struct ARViewContainer: UIViewRepresentable{
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(obj: "Crush", brand: "OMBRELLA")
+        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0)
     }
 }
 #endif

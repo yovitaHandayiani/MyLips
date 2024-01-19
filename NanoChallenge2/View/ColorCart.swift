@@ -14,6 +14,7 @@ struct ColorCart: View {
     var fav : Bool
     var brand : String
     var color : String
+    var index : Int
     
     var body: some View {
         VStack{
@@ -27,16 +28,25 @@ struct ColorCart: View {
                     Text(color).font(.caption).foregroundColor(.black)
                 }
                 Spacer()
-                if(fav == true){
-                    Image(systemName: "heart.fill")
-                        .resizable()
-                        .foregroundStyle(.pink)
-                        .frame(width: 22, height: 20)
-                }else{
-                    Image(systemName: "heart")
-                        .resizable()
-                        .foregroundStyle(.pink)
-                        .frame(width: 22, height: 20)
+                Button{
+                    if(brand=="OMBRELLA"){
+                        OMBRELLA[index].fav.toggle()
+                        print(OMBRELLA[index].fav)
+                    }else if(brand=="Etude House"){
+                        EtudeHouse[index].fav.toggle()
+                    }
+                }label: {
+                    if(fav == true){
+                        Image(systemName: "heart.fill")
+                            .resizable()
+                            .foregroundStyle(.pink)
+                            .frame(width: 22, height: 20)
+                    }else{
+                        Image(systemName: "heart")
+                            .resizable()
+                            .foregroundStyle(.pink)
+                            .frame(width: 22, height: 20)
+                    }
                 }
             }.frame(width: 142)
             
@@ -50,5 +60,5 @@ struct ColorCart: View {
 }
 
 #Preview {
-    ColorCart(redd : 208, greenn: 80, bluee: 74, fav: false, brand: "Brand", color: "Color")
+    ColorCart(redd : 208, greenn: 80, bluee: 74, fav: false, brand: "Brand", color: "Color", index: 0)
 }

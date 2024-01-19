@@ -38,7 +38,7 @@ struct Store: View {
                                     ScrollView(.horizontal, showsIndicators: false, content: {
                                         HStack(alignment: .top){
                                             ForEach(OMBRELLA){OMBRELLA in
-                                                NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA")){
+                                                NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
                                                     ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                                 }
                                             }.padding(2.5)
@@ -58,7 +58,7 @@ struct Store: View {
                                         HStack(alignment: .top){
                                             ForEach(EtudeHouse){EtudeHouse in
                                                 
-                                                NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House")){
+                                                NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id)){
                                                     ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
                                                 }
                                             }.padding(2.5)
@@ -89,7 +89,7 @@ struct Store: View {
                         ScrollView(.horizontal, showsIndicators: false, content: {
                             HStack(alignment: .top){
                                 ForEach(OMBRELLA){OMBRELLA in
-                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA")){
+                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
                                         ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                     }
                                 }.padding(2.5)
@@ -108,7 +108,7 @@ struct Store: View {
                         ScrollView(.horizontal, showsIndicators: false, content: {
                             HStack(alignment: .top){
                                 ForEach(EtudeHouse){EtudeHouse in
-                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House")){
+                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id)){
                                         ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
                                     }
                                 }.padding(2.5)
