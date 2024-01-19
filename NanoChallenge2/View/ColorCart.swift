@@ -23,8 +23,8 @@ struct ColorCart: View {
             Spacer()
             HStack{
                 VStack(alignment: .leading){
-                    Text(brand).font(.body)
-                    Text(color).font(.caption)
+                    Text(brand).font(.body).foregroundColor(.black)
+                    Text(color).font(.caption).foregroundColor(.black)
                 }
                 Spacer()
                 if(fav == true){

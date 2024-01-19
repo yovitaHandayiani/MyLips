@@ -20,7 +20,6 @@
 		9BC6AB0D2A15ED04008D0BD1 /* Experience.rcproject in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB0C2A15ED04008D0BD1 /* Experience.rcproject */; };
 		9BC6AB0F2A15ED05008D0BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC6AB0E2A15ED05008D0BD1 /* Assets.xcassets */; };
 		9BC6AB122A15ED05008D0BD1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC6AB112A15ED05008D0BD1 /* Preview Assets.xcassets */; };
-		9BC6AB1D2A175BA1008D0BD1 /* ColorPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB1C2A175BA1008D0BD1 /* ColorPage.swift */; };
 		9BC6AB1F2A19FDEA008D0BD1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */; };
 		9BD72AF32B4FF37400B9F3E3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD72AF22B4FF37400B9F3E3 /* TabBar.swift */; };
 /* End PBXBuildFile section */
@@ -41,7 +40,6 @@
 		9BC6AB0C2A15ED04008D0BD1 /* Experience.rcproject */ = {isa = PBXFileReference; lastKnownFileType = file.rcproject; path = Experience.rcproject; sourceTree = "<group>"; };
 		9BC6AB0E2A15ED05008D0BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9BC6AB112A15ED05008D0BD1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
-		9BC6AB1C2A175BA1008D0BD1 /* ColorPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorPage.swift; sourceTree = "<group>"; };
 		9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
 		9BD72AF22B4FF37400B9F3E3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -120,7 +118,6 @@
 		9BC6AB192A162F49008D0BD1 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9BC6AB1C2A175BA1008D0BD1 /* ColorPage.swift */,
 				9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */,
 				9B91A7002B551E9900B7BBDD /* ColorCart.swift */,
 				9BD72AF22B4FF37400B9F3E3 /* TabBar.swift */,
@@ -201,7 +198,6 @@
 			files = (
 				9B63FEBB2B4BDEF900C507D4 /* DataViewModel.swift in Sources */,
 				9B8AA76D2B4C4CFE0090B171 /* DataManager.swift in Sources */,
-				9BC6AB1D2A175BA1008D0BD1 /* ColorPage.swift in Sources */,
 				9B91A7012B551E9900B7BBDD /* ColorCart.swift in Sources */,
 				9BD72AF32B4FF37400B9F3E3 /* TabBar.swift in Sources */,
 				9B91A7032B57CD6900B7BBDD /* LipTintStruct.swift in Sources */,

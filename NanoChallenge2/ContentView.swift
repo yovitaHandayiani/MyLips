@@ -13,80 +13,134 @@ var arView = ARView(frame: .zero)
 
 struct ContentView : View {
     @State var obj: String
+    @State var brand: String
+    
+    @State var index: Int = 0
+//    @State private var b: String = ""
     
     var body: some View {
-        ZStack(alignment: .top){
-            ARViewContainer(obj: obj)
-                .edgesIgnoringSafeArea(.all)
-            VStack(alignment: .leading){
-//                call color button list
-            }
-            .padding(10)
-            .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/, alignment: .leading)
-            //.background(Color(.red))
-            VStack{
-                Color(red: 31/255, green: 31/255, blue: 31/255).ignoresSafeArea().frame(height: 0)
-                Spacer()
-                HStack{
-                    Button{
-                        UIApplication.shared.open(URL(string:"photos-redirect://")!)
-                    }label: {
-                        Image(systemName: "photo.fill.on.rectangle.fill")
-                            .resizable()
-                            .foregroundStyle(.pink)
-                            .frame(width: 26, height: 24)
-                            .padding(15)
-                            .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+        NavigationView{
+            ZStack(){
+                ARViewContainer(obj: obj)
+                    .edgesIgnoringSafeArea(.all)
+                HStack(alignment: .top){
+                    VStack(alignment: .leading){
+                        ScrollView(.vertical, showsIndicators: false, content: {
+                            VStack{
+                                if(brand == "OMBRELLA"){
+                                    ForEach(OMBRELLA){OMBRELLA in
+                                        Button{
+                                            ARViewContainer(obj: OMBRELLA.name)
+                                                .edgesIgnoringSafeArea(.all)
+                                            print(OMBRELLA.name)
+                                        }label: {
+                                            ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                        }
+                                    }.padding(2.5)
+                                }else{
+                                    ForEach(EtudeHouse){EtudeHouse in
+                                        Button{
+                                            ARViewContainer(obj: EtudeHouse.name)
+                                                .edgesIgnoringSafeArea(.all)
+                                            print(EtudeHouse.name)
+                                        }label: {
+                                            ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                        }
+                                    }.padding(2.5)
+                                }
+                                
+                            }.padding(2)
+                        }).frame(height: 340)
                     }
+                    .padding(10)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                    //.background(Color(.red))
+                }.frame(maxHeight: .infinity, alignment: .top)
+                    .padding(EdgeInsets(top: 160, leading: 0, bottom: 0, trailing: 0))
+                //.background(Color(.red))
+                
+                VStack{
+                    Color(red: 31/255, green: 31/255, blue: 31/255).edgesIgnoringSafeArea(.all).frame(height: 0)
                     Spacer()
-                    Button{
-                        arView.snapshot(saveToHDR: false){ (image) in
-                            
-                            //compress image
-                            let cImage = UIImage(data: (image?.pngData())!)
-                            
-                            //save to gallery
-                            UIImageWriteToSavedPhotosAlbum(cImage!, nil, nil, nil)
+                    HStack{
+                        Button{
+                            UIApplication.shared.open(URL(string:"photos-redirect://")!)
+                        }label: {
+                            Image(systemName: "photo.fill.on.rectangle.fill")
+                                .resizable()
+                                .foregroundStyle(.pink)
+                                .frame(width: 26, height: 24)
+                                .padding(15)
+                                .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                .clipShape(Circle())
                         }
-                    }label: {
-                        Circle()                        .strokeBorder(Color.black,lineWidth: 5)
-                            .background(Circle().foregroundColor(Color.white))
-                            .frame(width: 80, height: 80)
-                            .overlay(
-                                RoundedRectangle(cornerRadius: 100)
-                                    .stroke(Color.white, lineWidth: 5)
-                            )
-                    }
-                    Spacer()
-                    Button{
-                        
-                    }label: {
-//                        if(fav == true){
-//                            Image(systemName: "heart.fill")
-//                                .resizable()
-//                                .foregroundStyle(.pink)
-//                                .frame(width: 22, height: 20)
-//                        }else{
+                        Spacer()
+                        Button{
+                            arView.snapshot(saveToHDR: false){ (image) in
+                                
+                                //compress image
+                                let cImage = UIImage(data: (image?.pngData())!)
+                                
+                                //save to gallery
+                                UIImageWriteToSavedPhotosAlbum(cImage!, nil, nil, nil)
+                            }
+                        }label: {
+                            Circle()                        .strokeBorder(Color.black,lineWidth: 5)
+                                .background(Circle().foregroundColor(Color.white))
+                                .frame(width: 80, height: 80)
+                                .overlay(
+                                    RoundedRectangle(cornerRadius: 100)
+                                        .stroke(Color.white, lineWidth: 5)
+                                )
+                        }
+                        Spacer()
+                        ForEach(OMBRELLA){o in
+                            if(o.name.lowercased().contains(obj.lowercased())){
+                               // index = o.id
+                                
+                            }
+                            
+                        }
+//                        ForEach(OMBRELLA.indices, id: \.self) { i in
+//                            if(OMBRELLA[i].name.lowercased().contains(obj.lowercased())) {
+//                                //self.index = i
+//                            }
+//                        }
+                        Button{
+                            OMBRELLA[index].fav.toggle()
+                        }label: {
+                            if(OMBRELLA[index].fav == true){
+                                Image(systemName: "heart.fill")
+                                    .resizable()
+                                    .foregroundStyle(.pink)
+                                    .frame(width: 22, height: 20)
+                                    .padding(15)
+                                    .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                    .clipShape(Circle())
+                            }else{
+                                Image(systemName: "heart")
+                                    .resizable()
+                                    .foregroundStyle(.pink)
+                                    .frame(width: 22, height: 20)
+                                    .padding(15)
+                                    .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                    .clipShape(Circle())
+                            }
 //                            Image(systemName: "heart")
 //                                .resizable()
 //                                .foregroundStyle(.pink)
-//                                .frame(width: 22, height: 20)
-//                        }
-                        Image(systemName: "heart")
-                            .resizable()
-                            .foregroundStyle(.pink)
-                            .frame(width: 26, height: 24)
-                            .padding(15)
-                            .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                            .clipShape(/*@START_MENU_TOKEN@*/Circle()/*@END_MENU_TOKEN@*/)
+//                                .frame(width: 26, height: 24)
+//                                .padding(15)
+//                                .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+//                                .clipShape(Circle())
                             
+                        }
                     }
+                    .ignoresSafeArea()
+                    .frame(maxWidth: .infinity)
+                    .padding(30)
+                    .background(Color(red: 31/255, green: 31/255, blue: 31/255))
                 }
-                .ignoresSafeArea()
-                .frame(maxWidth: /*@START_MENU_TOKEN@*/.infinity/*@END_MENU_TOKEN@*/)
-                .padding(30)
-                .background(Color(red: 31/255, green: 31/255, blue: 31/255))
             }
         }
         
@@ -160,7 +214,7 @@ struct ARViewContainer: UIViewRepresentable{
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(obj: "Crush")
+        ContentView(obj: "Crush", brand: "OMBRELLA")
     }
 }
 #endif

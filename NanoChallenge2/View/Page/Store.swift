@@ -17,70 +17,119 @@ struct Store: View {
         
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
-                HStack{
-                    Image (systemName: "magnifyingglass")
-                        .padding (.leading)
-                    
-                    TextField( "Search for liptint brand", text:$search)
-                        .padding(8)
-                }
-                .background (Color(red: 255/255, green: 235/255, blue: 239/255))
-                .cornerRadius (12)
-                .padding(EdgeInsets(top: 0, leading: 16, bottom: 0, trailing: 16))
+//                HStack{
+//                    Image (systemName: "magnifyingglass")
+//                        .padding (.leading)
+//                    
+//                    TextField( "Search for lip tint brand", text:$search)
+//                        .padding(8)
+//                }
+//                .background (Color(red: 255/255, green: 235/255, blue: 239/255))
+//                .cornerRadius (12)
+//                .padding(EdgeInsets(top: 8, leading: 16, bottom: 24, trailing: 16))
                 
                 VStack(alignment: .leading){
                     if(!search.isEmpty){
                         ForEach(ListOfSearch){ ListOfSearch in
                             if(ListOfSearch.name.lowercased().contains(search.lowercased())){
+                                if(search.lowercased().contains("ombrella")){
+                                    Text(OMBRELLA[0].branNtype)
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                                    ScrollView(.horizontal, showsIndicators: false, content: {
+                                        HStack(alignment: .top){
+                                            ForEach(OMBRELLA){OMBRELLA in
+                                                NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA")){
+                                                    ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                                }
+                                            }.padding(2.5)
+                //                            ForEach(datavm.lipTint) { lipTint in
+                //                                lipTintView(entity: lipTint)
+                //                            }
+                                        }.padding(17)
+                                    }).overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
+                                           // .frame(width: 166, height: 171)
+                                    )
+                                }else if(search.lowercased().contains("etude house")){
+                                    Text(EtudeHouse[0].branNtype)
+                                        .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                                    ScrollView(.horizontal, showsIndicators: false, content: {
+                                        HStack(alignment: .top){
+                                            ForEach(EtudeHouse){EtudeHouse in
+                                                
+                                                NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House")){
+                                                    ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                                }
+                                            }.padding(2.5)
+                                            ForEach(notAvai){notAvai in
+                                                Button{
+                                                    showingAlert = true
+                                                }label: {
+                                                    ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name)
+                                                }.alert("Subscribe MyLips Pro", isPresented: $showingAlert) {
+                                                    Button("OK", role: .cancel) { }
+                                                }message:{
+                                                    Text("Subscribe MyLips Pro to explore more colors.")
+                                                }
+                                            }.padding(2.5)
+                                        }.padding(17)
+                                    }).overlay(
+                                        RoundedRectangle(cornerRadius: 12)
+                                            .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
+                                           // .frame(width: 166, height: 171)
+                                    )
+                                }
                                 
                             }
                         }
+                    }else{
+                        Text(OMBRELLA[0].branNtype)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                        ScrollView(.horizontal, showsIndicators: false, content: {
+                            HStack(alignment: .top){
+                                ForEach(OMBRELLA){OMBRELLA in
+                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA")){
+                                        ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                    }
+                                }.padding(2.5)
+    //                            ForEach(datavm.lipTint) { lipTint in
+    //                                lipTintView(entity: lipTint)
+    //                            }
+                            }.padding(17)
+                        }).overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
+                               // .frame(width: 166, height: 171)
+                        ).padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
+                        
+                        Text(EtudeHouse[0].branNtype)
+                            .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+                        ScrollView(.horizontal, showsIndicators: false, content: {
+                            HStack(alignment: .top){
+                                ForEach(EtudeHouse){EtudeHouse in
+                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House")){
+                                        ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                    }
+                                }.padding(2.5)
+                                ForEach(notAvai){notAvai in
+                                    Button{
+                                        showingAlert = true
+                                    }label: {
+                                        ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name)
+                                    }.alert("Subscribe MyLips Pro", isPresented: $showingAlert) {
+                                        Button("OK", role: .cancel) { }
+                                    }message:{
+                                        Text("Subscribe MyLips Pro to explore more colors.")
+                                    }
+                                }.padding(2.5)
+                            }.padding(17)
+                        }).overlay(
+                            RoundedRectangle(cornerRadius: 12)
+                                .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
+                               // .frame(width: 166, height: 171)
+                        )
                     }
-                    
-                    Text(OMBRELLA[0].branNtype)
-                    ScrollView(.horizontal, showsIndicators: false, content: {
-                        HStack(alignment: .top){
-                            ForEach(OMBRELLA){OMBRELLA in
-                                NavigationLink(destination: ContentView(obj: OMBRELLA.name)){
-                                    ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
-                                }
-                            }.padding(2.5)
-//                            ForEach(datavm.lipTint) { lipTint in
-//                                lipTintView(entity: lipTint)
-//                            }
-                        }.padding(17)
-                    }).overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
-                           // .frame(width: 166, height: 171)
-                    )
-                    
-                    Text(EtudeHouse[0].branNtype)
-                    ScrollView(.horizontal, showsIndicators: false, content: {
-                        HStack(alignment: .top){
-                            ForEach(EtudeHouse){EtudeHouse in
-                                
-                                NavigationLink(destination: ContentView(obj: EtudeHouse.name)){
-                                    ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
-                                }
-                            }.padding(2.5)
-                            ForEach(notAvai){notAvai in
-                                Button{
-                                    showingAlert = true
-                                }label: {
-                                    ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name)
-                                }.alert("Subscribe MyLips Pro", isPresented: $showingAlert) {
-                                    Button("OK", role: .cancel) { }
-                                }message:{
-                                    Text("Subscribe MyLips Pro to explore more colors.")
-                                }
-                            }
-                        }.padding(17)
-                    }).overlay(
-                        RoundedRectangle(cornerRadius: 12)
-                            .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
-                           // .frame(width: 166, height: 171)
-                    )
                 }
                 .padding()
 //                .onAppear{
@@ -93,9 +142,11 @@ struct Store: View {
 ////                    datavm.colorDetail = []
 ////                    datavm.brand = []
 //                }
+                
             }
             .navigationBarTitle("Store")
             //.navigationBarTitle("Store", displayMode: .inline)
+            .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Look for something")
         }
     }
 }

@@ -11,12 +11,16 @@ struct Favourite: View {
     var body: some View {
         NavigationView {
             ScrollView {
-                VStack() {
-                    ScrollView(.horizontal, showsIndicators: true, content: {
-                        HStack(alignment: .top){
-                            
-                            //                            ForEach(datavm.lipTint) { lipTint in
-                            //                                lipTintView(entity: lipTint)
+                VStack{
+                    ScrollView(.vertical, showsIndicators: false, content: {
+                        LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){
+                            ForEach(OMBRELLA){OMBRELLA in
+                                if(OMBRELLA.fav == true){
+                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA")){
+                                        ColorCart(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, fav: OMBRELLA.fav, brand: "OMBRELLA", color: OMBRELLA.name)
+                                    }
+                                }
+                            }.padding(13)
                         }
                     })
                 }
