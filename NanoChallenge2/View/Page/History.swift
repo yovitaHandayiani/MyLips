@@ -21,7 +21,7 @@ struct History: View {
                 }.padding(EdgeInsets(top: 48, leading: 16, bottom: 0, trailing: 24))
                 
                 VStack(alignment: .leading){
-                    Text("Date").font(.body)
+                    Text(Date.now.formatted(date: .complete, time: .omitted)).font(.body)
                     
                     ScrollView(.horizontal, showsIndicators: true, content: {
                         HStack(alignment: .top){

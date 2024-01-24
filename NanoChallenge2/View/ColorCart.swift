@@ -31,9 +31,12 @@ struct ColorCart: View {
                 Button{
                     if(brand=="OMBRELLA"){
                         OMBRELLA[index].fav.toggle()
+                        print(OMBRELLA[index].name)
                         print(OMBRELLA[index].fav)
                     }else if(brand=="Etude House"){
                         EtudeHouse[index].fav.toggle()
+                        print(EtudeHouse[index].name)
+                        print(EtudeHouse[index].fav)
                     }
                 }label: {
                     if(fav == true){

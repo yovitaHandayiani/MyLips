@@ -14,7 +14,6 @@ struct Store: View {
     @State private var showingAlert = false
     
     var body: some View {
-        
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
 //                HStack{
@@ -32,13 +31,13 @@ struct Store: View {
                     if(!search.isEmpty){
                         ForEach(ListOfSearch){ ListOfSearch in
                             if(ListOfSearch.name.lowercased().contains(search.lowercased())){
-                                if(search.lowercased().contains("ombrella")){
+                                if(search.lowercased().contains("om")){
                                     Text(OMBRELLA[0].branNtype)
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                                     ScrollView(.horizontal, showsIndicators: false, content: {
                                         HStack(alignment: .top){
                                             ForEach(OMBRELLA){OMBRELLA in
-                                                NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
+                                                NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id, history: [OMBRELLA.name])){
                                                     ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                                 }
                                             }.padding(2.5)
@@ -51,14 +50,14 @@ struct Store: View {
                                             .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
                                            // .frame(width: 166, height: 171)
                                     )
-                                }else if(search.lowercased().contains("etude house")){
+                                }else if(search.lowercased().contains("et")){
                                     Text(EtudeHouse[0].branNtype)
                                         .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                                     ScrollView(.horizontal, showsIndicators: false, content: {
                                         HStack(alignment: .top){
                                             ForEach(EtudeHouse){EtudeHouse in
                                                 
-                                                NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id)){
+                                                NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id, history: [EtudeHouse.name])){
                                                     ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
                                                 }
                                             }.padding(2.5)
@@ -89,7 +88,7 @@ struct Store: View {
                         ScrollView(.horizontal, showsIndicators: false, content: {
                             HStack(alignment: .top){
                                 ForEach(OMBRELLA){OMBRELLA in
-                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
+                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id, history: [OMBRELLA.name])){
                                         ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                     }
                                 }.padding(2.5)
@@ -108,7 +107,7 @@ struct Store: View {
                         ScrollView(.horizontal, showsIndicators: false, content: {
                             HStack(alignment: .top){
                                 ForEach(EtudeHouse){EtudeHouse in
-                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id)){
+                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id, history: [EtudeHouse.name])){
                                         ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
                                     }
                                 }.padding(2.5)
@@ -146,10 +145,15 @@ struct Store: View {
             }
             .navigationBarTitle("Store")
             //.navigationBarTitle("Store", displayMode: .inline)
-            .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Look for something")
+            .searchable(text: $search, placement: .navigationBarDrawer(displayMode: .automatic), prompt: "Search or enter lip tint brand")
+//            .onAppear{
+//                UISearchBar.appearance().tintColor = .green
+//            }
+            
         }
     }
 }
+
 
 //struct lipTintView: View{
 //    let entity: LipTintEntity

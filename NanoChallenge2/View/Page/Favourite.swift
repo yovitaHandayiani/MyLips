@@ -16,20 +16,25 @@ struct Favourite: View {
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){
                             ForEach(OMBRELLA){OMBRELLA in
                                 if(OMBRELLA.fav == true){
-                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
+                                    NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id,history: [OMBRELLA.name])){
                                         ColorCart(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, fav: OMBRELLA.fav, brand: "OMBRELLA", color: OMBRELLA.name, index: OMBRELLA.id)
                                     }
+                                }else if(OMBRELLA.fav == false){
+                                    Text("empty")
                                 }
                             }.padding(13)
                             
                             ForEach(EtudeHouse){EtudeHouse in
                                 if(EtudeHouse.fav == true){
-                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id)){
-                                        ColorCart(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, fav: EtudeHouse.fav, brand: "OMBRELLA", color: EtudeHouse.name, index: EtudeHouse.id)
+                                    NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id, history: [])){
+                                        ColorCart(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, fav: EtudeHouse.fav, brand: "Etude House", color: EtudeHouse.name, index: EtudeHouse.id)
                                     }
+                                }else if(EtudeHouse.fav == false){
+                                    Text("empty")
                                 }
                             }.padding(13)
                         }
+                        
                     })
                 }
                 .padding()

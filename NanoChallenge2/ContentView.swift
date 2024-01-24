@@ -15,34 +15,49 @@ struct ContentView : View {
     @State var obj: String
     @State var brand: String
     @State var index: Int
+    @State var history: [String] = []
     
     var body: some View {
         NavigationView{
             ZStack(){
                 ARViewContainer(obj: obj)
                     .edgesIgnoringSafeArea(.all)
+//                    .onAppear {
+//                        // This code will be executed when the view appears
+//                        history.append(obj) // Replace "YourObject" with the actual object you want to append
+//                    }
+                List(history, id: \.self) { item in
+                                Text(item)
+                            }
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
                         ScrollView(.vertical, showsIndicators: false, content: {
                             VStack{
                                 if(brand == "OMBRELLA"){
+                                    //history.append(contentsOf: [obj])
+                                    //OMBRELLA[index].history.toggle()
                                     ForEach(OMBRELLA){OMBRELLA in
                                         Button{
                                             ARViewContainer(obj: OMBRELLA.name)
                                                 .edgesIgnoringSafeArea(.all)
                                             print(OMBRELLA.name)
                                             index = OMBRELLA.id
+                                            history.append(OMBRELLA.name)
+                                            //OMBRELLA.history.toggle()
                                         }label: {
                                             ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                         }
                                     }.padding(2.5)
-                                }else{
+                                }else if(brand == "Etude House"){
+                                   //EtudeHouse[index].history.toggle()
                                     ForEach(EtudeHouse){EtudeHouse in
                                         Button{
                                             ARViewContainer(obj: EtudeHouse.name)
                                                 .edgesIgnoringSafeArea(.all)
                                             print(EtudeHouse.name)
                                             index = EtudeHouse.id
+                                            history.append(EtudeHouse.name)
+                                            //EtudeHouse.history.toggle()
                                         }label: {
                                             ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
                                         }
@@ -222,7 +237,7 @@ struct ARViewContainer: UIViewRepresentable{
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0)
+        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0, history: ["Crush"])
     }
 }
 #endif
