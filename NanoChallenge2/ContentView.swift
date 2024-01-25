@@ -20,7 +20,7 @@ struct ContentView : View {
    // @StateObject private var viewModel = HistoryViewModel()
     
     var body: some View {
-        NavigationView{
+        //NavigationView{
             ZStack(){
                 ARViewContainer(obj: obj)
                     .edgesIgnoringSafeArea(.all)
@@ -63,6 +63,10 @@ struct ContentView : View {
                                             print(EtudeHouse.name)
                                             index = EtudeHouse.id
                                             history.append(EtudeHouse.name)
+                                            DispatchQueue.main.async {
+                                                history.append(EtudeHouse.name)
+                                                    print(history)
+                                            }
                                             //EtudeHouse.history.toggle()
                                         }label: {
                                             ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
@@ -171,7 +175,7 @@ struct ContentView : View {
                     .background(Color(red: 31/255, green: 31/255, blue: 31/255))
                 }
             }
-        }
+        //}
         
     }
 }

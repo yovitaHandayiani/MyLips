@@ -12,6 +12,13 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    
+    override init() {
+        UIView.appearance(whenContainedInInstancesOf: [UIAlertController.self]).tintColor = .accent
+        UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = UIColor(red: 255/255, green: 235/255, blue: 239/255, alpha: 100)
+        //UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).backgroundColor = .secondary
+        //UITextField.appearance(whenContainedInInstancesOf: [UISearchBar.self]).tintColor = .black
+    }
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
