@@ -8,16 +8,21 @@
 import SwiftUI
 
 struct History: View {
+    
     var body: some View {
         NavigationView {
             ScrollView {
                 HStack{
                     Text("History").font(.largeTitle).fontWeight(/*@START_MENU_TOKEN@*/.bold/*@END_MENU_TOKEN@*/)
                     Spacer()
-                    Image(systemName: "trash.fill")
-                        .resizable()
-                        .foregroundStyle(.pink)
-                        .frame(width: 28, height: 30)
+                    Button{
+                        history.removeAll()
+                    }label: {
+                        Image(systemName: "trash.fill")
+                            .resizable()
+                            .foregroundStyle(.pink)
+                            .frame(width: 28, height: 30)
+                    }
                 }.padding(EdgeInsets(top: 48, leading: 16, bottom: 0, trailing: 24))
                 
                 VStack(alignment: .leading){
@@ -26,6 +31,10 @@ struct History: View {
                     ScrollView(.horizontal, showsIndicators: true, content: {
                         HStack(alignment: .top){
                             
+                            ForEach(history, id: \.self){ item in
+                                Text(item)
+                                //print(item)
+                            }
                             //                            ForEach(datavm.lipTint) { lipTint in
                             //                                lipTintView(entity: lipTint)
                         }

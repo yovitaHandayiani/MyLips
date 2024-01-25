@@ -10,25 +10,25 @@ import RealityKit
 import ARKit
 
 var arView = ARView(frame: .zero)
+var history: [String] = []
 
 struct ContentView : View {
     @State var obj: String
     @State var brand: String
     @State var index: Int
-    @State var history: [String] = []
+   
+   // @StateObject private var viewModel = HistoryViewModel()
     
     var body: some View {
         NavigationView{
             ZStack(){
                 ARViewContainer(obj: obj)
                     .edgesIgnoringSafeArea(.all)
-//                    .onAppear {
-//                        // This code will be executed when the view appears
-//                        history.append(obj) // Replace "YourObject" with the actual object you want to append
-//                    }
-                List(history, id: \.self) { item in
-                                Text(item)
-                            }
+                    .onAppear {
+                        // This code will be executed when the view appears
+                        history.append(obj) // Replace "YourObject" with the actual object you want to append
+                        //print(history)
+                    }
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
                         ScrollView(.vertical, showsIndicators: false, content: {
@@ -40,10 +40,16 @@ struct ContentView : View {
                                         Button{
                                             ARViewContainer(obj: OMBRELLA.name)
                                                 .edgesIgnoringSafeArea(.all)
+                                            print(obj)
                                             print(OMBRELLA.name)
                                             index = OMBRELLA.id
-                                            history.append(OMBRELLA.name)
+                                            
+                                            DispatchQueue.main.async {
+                                                history.append(OMBRELLA.name)
+                                                    print(history)
+                                            }
                                             //OMBRELLA.history.toggle()
+                                            //print(history)
                                         }label: {
                                             ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
                                         }
@@ -237,7 +243,7 @@ struct ARViewContainer: UIViewRepresentable{
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0, history: ["Crush"])
+        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0 /*,history: ["Crush"]*/)
     }
 }
 #endif
