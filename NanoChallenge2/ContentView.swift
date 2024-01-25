@@ -20,7 +20,7 @@ struct ContentView : View {
    // @StateObject private var viewModel = HistoryViewModel()
     
     var body: some View {
-        //NavigationView{
+        NavigationView{
             ZStack(){
                 ARViewContainer(obj: obj)
                     .edgesIgnoringSafeArea(.all)
@@ -46,7 +46,7 @@ struct ContentView : View {
                                             
                                             DispatchQueue.main.async {
                                                 history.append(OMBRELLA.name)
-                                                    print(history)
+                                                print(history)
                                             }
                                             //OMBRELLA.history.toggle()
                                             //print(history)
@@ -55,7 +55,7 @@ struct ContentView : View {
                                         }
                                     }.padding(2.5)
                                 }else if(brand == "Etude House"){
-                                   //EtudeHouse[index].history.toggle()
+                                    //EtudeHouse[index].history.toggle()
                                     ForEach(EtudeHouse){EtudeHouse in
                                         Button{
                                             ARViewContainer(obj: EtudeHouse.name)
@@ -65,7 +65,7 @@ struct ContentView : View {
                                             history.append(EtudeHouse.name)
                                             DispatchQueue.main.async {
                                                 history.append(EtudeHouse.name)
-                                                    print(history)
+                                                print(history)
                                             }
                                             //EtudeHouse.history.toggle()
                                         }label: {
@@ -175,7 +175,8 @@ struct ContentView : View {
                     .background(Color(red: 31/255, green: 31/255, blue: 31/255))
                 }
             }
-        //}
+            .toolbar(.hidden, for: .tabBar)
+        }
         
     }
 }
