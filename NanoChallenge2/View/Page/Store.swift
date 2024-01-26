@@ -14,7 +14,7 @@ struct Store: View {
     @State private var showingAlert = false
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView(.vertical, showsIndicators: false) {
                 //                HStack{
                 //                    Image (systemName: "magnifyingglass")
@@ -38,7 +38,7 @@ struct Store: View {
                                     HStack(alignment: .top){
                                         ForEach(OMBRELLA){OMBRELLA in
                                             NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id/*, history: [OMBRELLA.name]*/)){
-                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: true)
                                             }
                                         }.padding(2.5)
                                         //                            ForEach(datavm.lipTint) { lipTint in
@@ -60,14 +60,14 @@ struct Store: View {
                                         ForEach(EtudeHouse){EtudeHouse in
                                             
                                             NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id/*, history: [EtudeHouse.name]*/)){
-                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: true)
                                             }
                                         }.padding(2.5)
                                         ForEach(notAvai){notAvai in
                                             Button{
                                                 showingAlert = true
                                             }label: {
-                                                ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name)
+                                                ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name, needText: true)
                                             }.alert(isPresented: $showingAlert) {
                                                 Alert(
                                                     title: Text("Subscribe MyLips Pro"),
@@ -98,7 +98,7 @@ struct Store: View {
                                     HStack(alignment: .top){
                                         ForEach(OMBRELLA){OMBRELLA in
                                             NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id/*, history: [OMBRELLA.name]*/)){
-                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: true)
                                             }
                                         }.padding(2.5)
                                         //                            ForEach(datavm.lipTint) { lipTint in
@@ -119,14 +119,14 @@ struct Store: View {
                                             NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id
                                                                                     /*, history: [EtudeHouse.name]*/
                                                                                    )){
-                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: true)
                                             }
                                         }.padding(2.5)
                                         ForEach(notAvai){notAvai in
                                             Button{
                                                 showingAlert = true
                                             }label: {
-                                                ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name)
+                                                ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name, needText: true)
                                             }.alert(isPresented: $showingAlert) {
                                                 Alert(
                                                     title: Text("Subscribe MyLips Pro"),
@@ -167,7 +167,7 @@ struct Store: View {
                                     //            .onAppear{
                                     //                UISearchBar.appearance().tintColor = .green
                                     //            }
-                                    
+                                .toolbar(.visible, for: .tabBar)
                                     }
                                     }
                                     }

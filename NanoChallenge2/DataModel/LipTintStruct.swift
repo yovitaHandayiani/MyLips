@@ -80,8 +80,8 @@ var OMBRELLA = [
     LipTintColor(id: 1, branNtype: "OMBRELLA Lip Totem Tint", name: "Soul", redC: 211, greenC: 83, blueC: 67, fav: false),
     LipTintColor(id: 2, branNtype: "OMBRELLA Lip Totem Tint", name: "Bond", redC: 239, greenC: 115, blueC: 86, fav: false),
     LipTintColor(id: 3, branNtype: "OMBRELLA Lip Totem Tint", name: "Hottie", redC: 210, greenC: 31, blueC: 67, fav: false),
-    LipTintColor(id: 4, branNtype: "OMBRELLA Lip Totem Tint", name: "Under\nground", redC: 197, greenC: 119, blueC: 107, fav: false),
-    LipTintColor(id: 5, branNtype: "OMBRELLA Lip Totem Tint", name: "Under\ncover", redC: 173, greenC: 87, blueC: 90, fav: false),
+    LipTintColor(id: 4, branNtype: "OMBRELLA Lip Totem Tint", name: "Underground", redC: 197, greenC: 119, blueC: 107, fav: false),
+    LipTintColor(id: 5, branNtype: "OMBRELLA Lip Totem Tint", name: "Undercover", redC: 173, greenC: 87, blueC: 90, fav: false),
     LipTintColor(id: 6, branNtype: "OMBRELLA Lip Totem Tint", name: "High", redC: 225, greenC: 15, blueC: 74, fav: false),
     LipTintColor(id: 7, branNtype: "OMBRELLA Lip Totem Tint", name: "Doze", redC: 191, greenC: 49, blueC: 39, fav: false),
     LipTintColor(id: 8, branNtype: "OMBRELLA Lip Totem Tint", name: "HAYG", redC: 183, greenC: 111, blueC: 120, fav: false),
@@ -93,7 +93,7 @@ var OMBRELLA = [
 ]
 
 var EtudeHouse = [
-    LipTintColor(id: 0, branNtype: "Etude House Dear My Wish Lips Talk", name: "PitAPat", redC: 241, greenC: 62, blueC: 92, fav: false),
+    LipTintColor(id: 0, branNtype: "Etude House Dear My Wish Lips Talk", name: "pit-a-pat", redC: 241, greenC: 62, blueC: 92, fav: false),
     LipTintColor(id: 1, branNtype: "Etude House Dear My Wish Lips Talk", name: "Breaking", redC: 165, greenC: 27, blueC: 34, fav: false),
     LipTintColor(id: 2, branNtype: "Etude House Dear My Wish Lips Talk", name: "Burgundy", redC: 100, greenC: 13, blueC: 34, fav: false),
 ]

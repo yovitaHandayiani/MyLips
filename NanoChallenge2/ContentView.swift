@@ -8,6 +8,7 @@
 import SwiftUI
 import RealityKit
 import ARKit
+import Combine
 
 var arView = ARView(frame: .zero)
 var history: [String] = []
@@ -16,18 +17,37 @@ struct ContentView : View {
     @State var obj: String
     @State var brand: String
     @State var index: Int
+    @State private var isFav: Bool = false
    
    // @StateObject private var viewModel = HistoryViewModel()
     
     var body: some View {
-        NavigationView{
+        //NavigationView{
             ZStack(){
                 ARViewContainer(obj: obj)
                     .edgesIgnoringSafeArea(.all)
                     .onAppear {
-                        // This code will be executed when the view appears
-                        history.append(obj) // Replace "YourObject" with the actual object you want to append
-                        //print(history)
+                        print(history)
+                        if(brand == "OMBRELLA"){
+                            isFav = OMBRELLA[index].fav
+                            if let idx = history.firstIndex(of: OMBRELLA[index].name) {
+                                history.remove(at: idx)
+                                history.append(obj)
+                            }
+                            else if !history.contains(OMBRELLA[index].name) {
+                                history.append(OMBRELLA[index].name)
+                            }
+                        }else{
+                            isFav = EtudeHouse[index].fav
+                            if let idx = history.firstIndex(of: EtudeHouse[index].name) {
+                                history.remove(at: idx)
+                                history.append(obj)
+                            }
+                            else if !history.contains(EtudeHouse[index].name) {
+                                history.append(EtudeHouse[index].name)
+                            }
+                        }
+                        print(history)
                     }
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
@@ -45,15 +65,24 @@ struct ContentView : View {
                                             index = OMBRELLA.id
                                             
                                             DispatchQueue.main.async {
-                                                history.append(OMBRELLA.name)
+                                                if let idx = history.firstIndex(of: OMBRELLA.name) {
+                                                    history.remove(at: idx)
+                                                    history.append(OMBRELLA.name)
+                                                }
+                                                if !history.contains(OMBRELLA.name) {
+                                                    history.append(OMBRELLA.name)
+                                                }
                                                 print(history)
                                             }
                                             //OMBRELLA.history.toggle()
                                             //print(history)
                                         }label: {
-                                            ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name)
+                                            ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: false)
                                         }
-                                    }.padding(2.5)
+                                    }.padding(4)
+                                        .onAppear{
+                                            isFav = OMBRELLA[index].fav
+                                        }
                                 }else if(brand == "Etude House"){
                                     //EtudeHouse[index].history.toggle()
                                     ForEach(EtudeHouse){EtudeHouse in
@@ -62,30 +91,39 @@ struct ContentView : View {
                                                 .edgesIgnoringSafeArea(.all)
                                             print(EtudeHouse.name)
                                             index = EtudeHouse.id
-                                            history.append(EtudeHouse.name)
+                                            
                                             DispatchQueue.main.async {
-                                                history.append(EtudeHouse.name)
+                                                if let idx = history.firstIndex(of: EtudeHouse.name) {
+                                                    history.remove(at: idx)
+                                                    history.append(EtudeHouse.name)
+                                                }
+                                                if !history.contains(EtudeHouse.name) {
+                                                    history.append(EtudeHouse.name)
+                                                }
                                                 print(history)
                                             }
                                             //EtudeHouse.history.toggle()
                                         }label: {
-                                            ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name)
+                                            ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: false)
                                         }
-                                    }.padding(2.5)
+                                    }.padding(4)
+                                        .onAppear{
+                                            isFav = EtudeHouse[index].fav
+                                        }
                                 }
                                 
                             }.padding(2)
-                        }).frame(height: 340)
+                        }).frame(height: 270)
                     }
                     .padding(10)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     //.background(Color(.red))
                 }.frame(maxHeight: .infinity, alignment: .top)
-                    .padding(EdgeInsets(top: 160, leading: 0, bottom: 0, trailing: 0))
+                    .padding(EdgeInsets(top: 140, leading: 0, bottom: 0, trailing: 0))
                 //.background(Color(.red))
                 
                 VStack{
-                    Color(red: 31/255, green: 31/255, blue: 31/255).edgesIgnoringSafeArea(.all).frame(height: 0)
+                    Color(red: 31/255, green: 31/255, blue: 31/255).edgesIgnoringSafeArea(.all).frame(height: 0).offset(y: -45)
                     Spacer()
                     HStack{
                         Button{
@@ -120,54 +158,91 @@ struct ContentView : View {
                         }
                         Spacer()
                         if(brand=="OMBRELLA"){
-                            Button{
-                                OMBRELLA[index].fav.toggle()
-                                print(OMBRELLA[index].fav)
-                            }label: {
-                                if(OMBRELLA[index].fav == true){
-                                    Image(systemName: "heart.fill")
-                                        .resizable()
-                                        .foregroundStyle(.pink)
-                                        .frame(width: 22, height: 20)
-                                        .padding(15)
-                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                        .clipShape(Circle())
-                                }else if (OMBRELLA[index].fav == false){
-                                    Image(systemName: "heart")
-                                        .resizable()
-                                        .foregroundStyle(.pink)
-                                        .frame(width: 22, height: 20)
-                                        .padding(15)
-                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                        .clipShape(Circle())
+                            Image(systemName: isFav && OMBRELLA[index].fav ? "heart.fill" : "heart")
+                                .resizable()
+                                .foregroundStyle(.pink)
+                                .frame(width: 22, height: 20)
+                                .padding(15)
+                                .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                .clipShape(Circle())
+                                .onTapGesture {
+                                    OMBRELLA[index].fav.toggle()
+                                    isFav = OMBRELLA[index].fav
+                                    print(OMBRELLA[index].fav)
                                 }
-                                
-                            }
+                                .onChange(of: OMBRELLA[index].fav) { newValue in
+                                    isFav = newValue
+                                }
                         }else if(brand=="Etude House"){
-                            Button{
-                                EtudeHouse[index].fav.toggle()
-                                print(EtudeHouse[index].fav)
-                            }label: {
-                                if(EtudeHouse[index].fav == true){
-                                    Image(systemName: "heart.fill")
-                                        .resizable()
-                                        .foregroundStyle(.pink)
-                                        .frame(width: 22, height: 20)
-                                        .padding(15)
-                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                        .clipShape(Circle())
-                                }else if (EtudeHouse[index].fav == false){
-                                    Image(systemName: "heart")
-                                        .resizable()
-                                        .foregroundStyle(.pink)
-                                        .frame(width: 22, height: 20)
-                                        .padding(15)
-                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
-                                        .clipShape(Circle())
+                            Image(systemName: isFav && EtudeHouse[index].fav ? "heart.fill" : "heart")
+                                .resizable()
+                                .foregroundStyle(.pink)
+                                .frame(width: 22, height: 20)
+                                .padding(15)
+                                .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+                                .clipShape(Circle())
+                                .onTapGesture {
+                                    EtudeHouse[index].fav.toggle()
+                                    isFav = EtudeHouse[index].fav
+                                    print(EtudeHouse[index].fav)
                                 }
-                                
-                            }
+                                .onChange(of: EtudeHouse[index].fav) { newValue in
+                                    isFav = newValue
+                                }
                         }
+//                        if(brand=="OMBRELLA"){
+//                            Button{
+//                                OMBRELLA[index].fav.toggle()
+//                                print(OMBRELLA[index].fav)
+//                            }label: {
+//                                if(OMBRELLA[index].fav == true){
+//                                    Image(systemName: "heart.fill")
+//                                        .resizable()
+//                                        .foregroundStyle(.pink)
+//                                        .frame(width: 22, height: 20)
+//                                        .padding(15)
+//                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+//                                        .clipShape(Circle())
+//                                }else if (OMBRELLA[index].fav == false){
+//                                    Image(systemName: "heart")
+//                                        .resizable()
+//                                        .foregroundStyle(.pink)
+//                                        .frame(width: 22, height: 20)
+//                                        .padding(15)
+//                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+//                                        .clipShape(Circle())
+//                                }
+//                                
+//                            }.onChange(of: OMBRELLA[index].fav) { newValue in
+//                                isFav = newValue
+//                            }
+//                        }else if(brand=="Etude House"){
+//                            Button{
+//                                EtudeHouse[index].fav.toggle()
+//                                print(EtudeHouse[index].fav)
+//                            }label: {
+//                                if EtudeHouse[index].fav{
+//                                    Image(systemName: "heart.fill")
+//                                        .resizable()
+//                                        .foregroundStyle(.pink)
+//                                        .frame(width: 22, height: 20)
+//                                        .padding(15)
+//                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+//                                        .clipShape(Circle())
+//                                }else{
+//                                    Image(systemName: "heart")
+//                                        .resizable()
+//                                        .foregroundStyle(.pink)
+//                                        .frame(width: 22, height: 20)
+//                                        .padding(15)
+//                                        .background(Color(red: 40/255, green: 40/255, blue: 40/255))
+//                                        .clipShape(Circle())
+//                                }
+//                                
+//                            }.onChange(of: EtudeHouse[index].fav) { newValue in
+//                                    isFav = newValue
+//                                }
+//                        }
                     }
                     .ignoresSafeArea()
                     .frame(maxWidth: .infinity)
@@ -176,7 +251,7 @@ struct ContentView : View {
                 }
             }
             .toolbar(.hidden, for: .tabBar)
-        }
+        //}
         
     }
 }
@@ -225,7 +300,7 @@ struct ARViewContainer: UIViewRepresentable{
             arView.scene.anchors.append(try! Experience.loadWUCU())
         case "Nikola":
             arView.scene.anchors.append(try! Experience.loadNikola())
-        case "pitApat":
+        case "pit-a-pat":
             arView.scene.anchors.append(try! Experience.loadPitApat())
             
         case "Breaking":
