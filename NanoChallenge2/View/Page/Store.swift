@@ -29,7 +29,7 @@ struct Store: View {
                 
                 VStack(alignment: .leading){
                     if(!search.isEmpty){
-                        ForEach(ListOfSearch.filter { search.isEmpty || $0.name.localizedCaseInsensitiveContains(search) }, id: \.id) { item in
+                        ForEach(ListOfSearch.filter {$0.name.localizedCaseInsensitiveContains(search) }, id: \.id) { item in
                             //Text(item.name)
                             if(item.name.localizedCaseInsensitiveContains("OMBRELLA")){
                                 Text(OMBRELLA[0].branNtype)

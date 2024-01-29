@@ -15,6 +15,7 @@ struct ColorCart: View {
     var brand : String
     var color : String
     var index : Int
+    @State private var isFav: Bool = true
     
     var body: some View {
         VStack{
@@ -28,29 +29,58 @@ struct ColorCart: View {
                     Text(color).font(.caption).foregroundColor(.black)
                 }
                 Spacer()
-                Button{
-                    if(brand=="OMBRELLA"){
-                        OMBRELLA[index].fav.toggle()
-                        print(OMBRELLA[index].name)
-                        print(OMBRELLA[index].fav)
-                    }else if(brand=="Etude House"){
-                        EtudeHouse[index].fav.toggle()
-                        print(EtudeHouse[index].name)
-                        print(EtudeHouse[index].fav)
-                    }
-                }label: {
-                    if(fav == true){
-                        Image(systemName: "heart.fill")
-                            .resizable()
-                            .foregroundStyle(.pink)
-                            .frame(width: 22, height: 20)
-                    }else{
-                        Image(systemName: "heart")
-                            .resizable()
-                            .foregroundStyle(.pink)
-                            .frame(width: 22, height: 20)
-                    }
+                
+                if(brand=="OMBRELLA"){
+                    Image(systemName: isFav && OMBRELLA[index].fav ? "heart.fill" : "heart")
+                        .resizable()
+                        .foregroundStyle(.pink)
+                        .frame(width: 22, height: 20)
+                        .onTapGesture {
+                            OMBRELLA[index].fav.toggle()
+                            isFav = OMBRELLA[index].fav
+                            print(OMBRELLA[index].fav)
+                        }
+                        .onChange(of: OMBRELLA[index].fav) { newValue in
+                            isFav = newValue
+                        }
+                }else if(brand=="Etude House"){
+                    Image(systemName: isFav && EtudeHouse[index].fav ? "heart.fill" : "heart")
+                        .resizable()
+                        .foregroundStyle(.pink)
+                        .frame(width: 22, height: 20)
+                        .onTapGesture {
+                            EtudeHouse[index].fav.toggle()
+                            isFav = EtudeHouse[index].fav
+                            //print(EtudeHouse[index].fav)
+                        }
+                        .onChange(of: EtudeHouse[index].fav) { newValue in
+                            isFav = newValue
+                        }
                 }
+//                Button{
+//                    if(brand=="OMBRELLA"){
+//                        OMBRELLA[index].fav.toggle()
+//                        print(OMBRELLA[index].name)
+//                        print(OMBRELLA[index].fav)
+//                    }else if(brand=="Etude House"){
+//                        EtudeHouse[index].fav.toggle()
+//                        print(EtudeHouse[index].name)
+//                        print(EtudeHouse[index].fav)
+//                    }
+//                }label: {
+//                    if(fav == true){
+//                        Image(systemName: "heart.fill")
+//                            .resizable()
+//                            .foregroundStyle(.pink)
+//                            .frame(width: 22, height: 20)
+//                    }else{
+//                        Image(systemName: "heart")
+//                            .resizable()
+//                            .foregroundStyle(.pink)
+//                            .frame(width: 22, height: 20)
+//                    }
+//                }
+                
             }.frame(width: 142)
             
         }.frame(height: 151)
@@ -63,5 +93,5 @@ struct ColorCart: View {
 }
 
 #Preview {
-    ColorCart(redd : 208, greenn: 80, bluee: 74, fav: false, brand: "Brand", color: "Color", index: 0)
+    ColorCart(redd : 208, greenn: 80, bluee: 74, fav: false, brand: "OMBRELLA", color: "Crush", index: 0)
 }

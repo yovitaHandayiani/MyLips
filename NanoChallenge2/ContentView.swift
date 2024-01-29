@@ -12,14 +12,13 @@ import Combine
 
 var arView = ARView(frame: .zero)
 var history: [String] = []
+//var isFav: Bool = false
 
 struct ContentView : View {
     @State var obj: String
     @State var brand: String
     @State var index: Int
     @State private var isFav: Bool = false
-   
-   // @StateObject private var viewModel = HistoryViewModel()
     
     var body: some View {
         //NavigationView{
