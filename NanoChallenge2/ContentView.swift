@@ -11,7 +11,7 @@ import ARKit
 import Combine
 
 var arView = ARView(frame: .zero)
-var history: [String] = []
+//var history: [String] = []
 //var isFav: Bool = false
 
 struct ContentView : View {
@@ -19,34 +19,38 @@ struct ContentView : View {
     @State var brand: String
     @State var index: Int
     @State private var isFav: Bool = false
+    //@State private var history: [String] = []
+    @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         //NavigationView{
+            //History(history: $history)
             ZStack(){
                 ARViewContainer(obj: obj)
                     .edgesIgnoringSafeArea(.all)
                     .onAppear {
-                        print(history)
+                        print(modelData.history)
                         if(brand == "OMBRELLA"){
                             isFav = OMBRELLA[index].fav
-                            if let idx = history.firstIndex(of: OMBRELLA[index].name) {
-                                history.remove(at: idx)
-                                history.append(obj)
+                            
+                            if let idx = modelData.history.firstIndex(of: OMBRELLA[index].name) {
+                                modelData.history.remove(at: idx)
+                                modelData.history.append(obj)
                             }
-                            else if !history.contains(OMBRELLA[index].name) {
-                                history.append(OMBRELLA[index].name)
+                            else if !modelData.history.contains(OMBRELLA[index].name) {
+                                modelData.history.append(OMBRELLA[index].name)
                             }
                         }else{
                             isFav = EtudeHouse[index].fav
-                            if let idx = history.firstIndex(of: EtudeHouse[index].name) {
-                                history.remove(at: idx)
-                                history.append(obj)
+                            if let idx = modelData.history.firstIndex(of: EtudeHouse[index].name) {
+                                modelData.history.remove(at: idx)
+                                modelData.history.append(obj)
                             }
-                            else if !history.contains(EtudeHouse[index].name) {
-                                history.append(EtudeHouse[index].name)
+                            else if !modelData.history.contains(EtudeHouse[index].name) {
+                                modelData.history.append(EtudeHouse[index].name)
                             }
                         }
-                        print(history)
+                        print(modelData.history)
                     }
                 HStack(alignment: .top){
                     VStack(alignment: .leading){
@@ -64,14 +68,14 @@ struct ContentView : View {
                                             index = OMBRELLA.id
                                             
                                             DispatchQueue.main.async {
-                                                if let idx = history.firstIndex(of: OMBRELLA.name) {
-                                                    history.remove(at: idx)
-                                                    history.append(OMBRELLA.name)
+                                                if let idx = modelData.history.firstIndex(of: OMBRELLA.name) {
+                                                    modelData.history.remove(at: idx)
+                                                    modelData.history.append(OMBRELLA.name)
                                                 }
-                                                if !history.contains(OMBRELLA.name) {
-                                                    history.append(OMBRELLA.name)
+                                                if !modelData.history.contains(OMBRELLA.name) {
+                                                    modelData.history.append(OMBRELLA.name)
                                                 }
-                                                print(history)
+                                                print(modelData.history)
                                             }
                                             //OMBRELLA.history.toggle()
                                             //print(history)
@@ -92,14 +96,14 @@ struct ContentView : View {
                                             index = EtudeHouse.id
                                             
                                             DispatchQueue.main.async {
-                                                if let idx = history.firstIndex(of: EtudeHouse.name) {
-                                                    history.remove(at: idx)
-                                                    history.append(EtudeHouse.name)
+                                                if let idx = modelData.history.firstIndex(of: EtudeHouse.name) {
+                                                    modelData.history.remove(at: idx)
+                                                    modelData.history.append(EtudeHouse.name)
                                                 }
-                                                if !history.contains(EtudeHouse.name) {
-                                                    history.append(EtudeHouse.name)
+                                                if !modelData.history.contains(EtudeHouse.name) {
+                                                    modelData.history.append(EtudeHouse.name)
                                                 }
-                                                print(history)
+                                                print(modelData.history)
                                             }
                                             //EtudeHouse.history.toggle()
                                         }label: {
@@ -250,6 +254,9 @@ struct ContentView : View {
                 }
             }
             .toolbar(.hidden, for: .tabBar)
+//        ScrollView{
+//            History(modelData: modelData)
+//        }
         //}
         
     }
@@ -322,7 +329,7 @@ struct ARViewContainer: UIViewRepresentable{
 #if DEBUG
 struct ContentView_Previews : PreviewProvider {
     static var previews: some View {
-        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0 /*,history: ["Crush"]*/)
+        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0/*,history: ["Crush"]*/)
     }
 }
 #endif

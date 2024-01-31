@@ -10,7 +10,8 @@ import SwiftUI
 
 struct TabBar: View {
     @State private var selectedTab = 0
-   
+    @EnvironmentObject var modelData: ModelData
+    
     var body: some View {
         TabView(selection: $selectedTab) {
             Store()
@@ -29,7 +30,7 @@ struct TabBar: View {
                 }
                 .tag(1)
             
-            History()
+            History(history: $modelData.history, modelData: modelData)
                 .tabItem {
                     Image(systemName: "clock.arrow.circlepath")
                     Text("History")

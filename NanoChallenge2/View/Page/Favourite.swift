@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Favourite: View {
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ScrollView {
                 VStack{
                     ScrollView(.vertical, showsIndicators: false, content: {
@@ -43,6 +43,7 @@ struct Favourite: View {
                 
             }.navigationBarTitle("Favourite")
         }
+        .toolbar(.visible, for: .tabBar)
     }
 }
 

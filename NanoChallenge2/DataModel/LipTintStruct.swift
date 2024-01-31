@@ -18,15 +18,16 @@ struct LipTintColor: Identifiable{
     var fav: Bool
 }
 
-struct allBrand: Identifiable{
-    var id = UUID().uuidString
-    var name: String
-}
+//struct allBrand: Identifiable{
+//    var id = UUID().uuidString
+//    var name: String
+//}
 
-var ListOfSearch = [
-    allBrand(name: "OMBRELLA Lip Totem Tint"),
-    allBrand(name: "Etude House Dear My Wish Lips Talk")
-]
+//var ListOfSearch = [
+//    allBrand(name: "OMBRELLA Lip Totem Tint"),
+//    allBrand(name: "Etude House Dear My Wish Lips Talk")
+//]
+
 var OMBRELLA = [
     LipTintColor(id: 0,
                  branNtype: "OMBRELLA Lip Totem Tint",

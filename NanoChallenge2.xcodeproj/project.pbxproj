@@ -22,6 +22,7 @@
 		9BC6AB122A15ED05008D0BD1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9BC6AB112A15ED05008D0BD1 /* Preview Assets.xcassets */; };
 		9BC6AB1F2A19FDEA008D0BD1 /* ColorButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */; };
 		9BD72AF32B4FF37400B9F3E3 /* TabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BD72AF22B4FF37400B9F3E3 /* TabBar.swift */; };
+		9BEA14862B6A2E4E003B5F42 /* ModelData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BEA14852B6A2E4E003B5F42 /* ModelData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		9BC6AB112A15ED05008D0BD1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		9BC6AB1E2A19FDEA008D0BD1 /* ColorButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorButton.swift; sourceTree = "<group>"; };
 		9BD72AF22B4FF37400B9F3E3 /* TabBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBar.swift; sourceTree = "<group>"; };
+		9BEA14852B6A2E4E003B5F42 /* ModelData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModelData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +60,7 @@
 		9B63FEB62B4BD6BE00C507D4 /* DataModel */ = {
 			isa = PBXGroup;
 			children = (
+				9BEA14852B6A2E4E003B5F42 /* ModelData.swift */,
 				9B63FEB72B4BD90900C507D4 /* LipTintContainer.xcdatamodeld */,
 				9B63FEBA2B4BDEF900C507D4 /* DataViewModel.swift */,
 				9B8AA76C2B4C4CFE0090B171 /* DataManager.swift */,
@@ -209,6 +212,7 @@
 				9BC6AB092A15ED04008D0BD1 /* AppDelegate.swift in Sources */,
 				9B63FEB92B4BD90900C507D4 /* LipTintContainer.xcdatamodeld in Sources */,
 				9BC6AB0D2A15ED04008D0BD1 /* Experience.rcproject in Sources */,
+				9BEA14862B6A2E4E003B5F42 /* ModelData.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

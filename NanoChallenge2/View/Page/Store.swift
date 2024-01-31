@@ -12,6 +12,7 @@ struct Store: View {
     //    @StateObject var datavm = DataViewModel()
     @State private var search: String = ""
     @State private var showingAlert = false
+    private var ListOfSearch: [String] = ["OMBRELLA Lip Totem Tint", "Etude House Dear My Wish Lips Talk"]
     
     var body: some View {
         NavigationStack {
@@ -29,9 +30,9 @@ struct Store: View {
                 
                 VStack(alignment: .leading){
                     if(!search.isEmpty){
-                        ForEach(ListOfSearch.filter {$0.name.localizedCaseInsensitiveContains(search) }, id: \.id) { item in
+                        ForEach(ListOfSearch.filter {$0.localizedCaseInsensitiveContains(search)}, id: \.id) { item in
                             //Text(item.name)
-                            if(item.name.localizedCaseInsensitiveContains("OMBRELLA")){
+                            if(item.localizedCaseInsensitiveContains("OMBRELLA")){
                                 Text(OMBRELLA[0].branNtype)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                                 ScrollView(.horizontal, showsIndicators: false, content: {
@@ -51,7 +52,7 @@ struct Store: View {
                                     // .frame(width: 166, height: 171)
                                 )
                             }
-                            else if(item.name.localizedCaseInsensitiveContains("Etude House")){
+                            else if(item.localizedCaseInsensitiveContains("Etude House")){
                                 //
                                 Text(EtudeHouse[0].branNtype)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
