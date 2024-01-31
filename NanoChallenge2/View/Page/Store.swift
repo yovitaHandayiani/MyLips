@@ -12,7 +12,7 @@ struct Store: View {
     //    @StateObject var datavm = DataViewModel()
     @State private var search: String = ""
     @State private var showingAlert = false
-    private var ListOfSearch: [String] = ["OMBRELLA Lip Totem Tint", "Etude House Dear My Wish Lips Talk"]
+    //private var ListOfSearch: [String] = ["OMBRELLA Lip Totem Tint", "Etude House Dear My Wish Lips Talk"]
     
     var body: some View {
         NavigationStack {
@@ -29,70 +29,71 @@ struct Store: View {
                 //                .padding(EdgeInsets(top: 8, leading: 16, bottom: 24, trailing: 16))
                 
                 VStack(alignment: .leading){
-                    if(!search.isEmpty){
-                        ForEach(ListOfSearch.filter {$0.localizedCaseInsensitiveContains(search)}, id: \.id) { item in
-                            //Text(item.name)
-                            if(item.localizedCaseInsensitiveContains("OMBRELLA")){
-                                Text(OMBRELLA[0].branNtype)
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
-                                ScrollView(.horizontal, showsIndicators: false, content: {
-                                    HStack(alignment: .top){
-                                        ForEach(OMBRELLA){OMBRELLA in
-                                            NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id/*, history: [OMBRELLA.name]*/)){
-                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: true)
-                                            }
-                                        }.padding(2.5)
-                                        //                            ForEach(datavm.lipTint) { lipTint in
-                                        //                                lipTintView(entity: lipTint)
-                                        //                            }
-                                    }.padding(17)
-                                }).overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
-                                    // .frame(width: 166, height: 171)
-                                )
-                            }
-                            else if(item.localizedCaseInsensitiveContains("Etude House")){
-                                //
-                                Text(EtudeHouse[0].branNtype)
-                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
-                                ScrollView(.horizontal, showsIndicators: false, content: {
-                                    HStack(alignment: .top){
-                                        ForEach(EtudeHouse){EtudeHouse in
-                                            
-                                            NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id/*, history: [EtudeHouse.name]*/)){
-                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: true)
-                                            }
-                                        }.padding(2.5)
-                                        ForEach(notAvai){notAvai in
-                                            Button{
-                                                showingAlert = true
-                                            }label: {
-                                                ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name, needText: true)
-                                            }.alert(isPresented: $showingAlert) {
-                                                Alert(
-                                                    title: Text("Subscribe MyLips Pro"),
-                                                    message: Text("Subscribe MyLips Pro to explore more colors."),
-                                                    primaryButton: Alert.Button.default(
-                                                        Text("Subscribe"), action: {
-                                                            //
-                                                        }
-                                                    ),
-                                                    secondaryButton: .cancel()
-                                                )
-                                            }
-                                        }.padding(2.5)
-                                    }.padding(17)
-                                }).overlay(
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
-                                    // .frame(width: 166, height: 171)
-                                )
-                                //
-                            }
-                        }
-                    }
-                    else{
+//                    if(!search.isEmpty){
+//                        ForEach(ListOfSearch.filter {$0.localizedCaseInsensitiveContains(search)}, id: \.id) { item in
+//                            //Text(item.name)
+//                            if(item.localizedCaseInsensitiveContains("OMBRELLA")){
+//                                Text(OMBRELLA[0].branNtype)
+//                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+//                                ScrollView(.horizontal, showsIndicators: false, content: {
+//                                    HStack(alignment: .top){
+//                                        ForEach(OMBRELLA){OMBRELLA in
+//                                            NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id/*, history: [OMBRELLA.name]*/)){
+//                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: true)
+//                                            }
+//                                        }.padding(2.5)
+//                                        //                            ForEach(datavm.lipTint) { lipTint in
+//                                        //                                lipTintView(entity: lipTint)
+//                                        //                            }
+//                                    }.padding(17)
+//                                }).overlay(
+//                                    RoundedRectangle(cornerRadius: 12)
+//                                        .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
+//                                    // .frame(width: 166, height: 171)
+//                                )
+//                            }
+//                            else if(item.localizedCaseInsensitiveContains("Etude House")){
+//                                //
+//                                Text(EtudeHouse[0].branNtype)
+//                                    .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
+//                                ScrollView(.horizontal, showsIndicators: false, content: {
+//                                    HStack(alignment: .top){
+//                                        ForEach(EtudeHouse){EtudeHouse in
+//                                            
+//                                            NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id/*, history: [EtudeHouse.name]*/)){
+//                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: true)
+//                                            }
+//                                        }.padding(2.5)
+//                                        ForEach(notAvai){notAvai in
+//                                            Button{
+//                                                showingAlert = true
+//                                            }label: {
+//                                                ColorButton(redd : notAvai.redC, greenn: notAvai.greenC, bluee: notAvai.blueC, textt: notAvai.name, needText: true)
+//                                            }.alert(isPresented: $showingAlert) {
+//                                                Alert(
+//                                                    title: Text("Subscribe MyLips Pro"),
+//                                                    message: Text("Subscribe MyLips Pro to explore more colors."),
+//                                                    primaryButton: Alert.Button.default(
+//                                                        Text("Subscribe"), action: {
+//                                                            //
+//                                                        }
+//                                                    ),
+//                                                    secondaryButton: .cancel()
+//                                                )
+//                                            }
+//                                        }.padding(2.5)
+//                                    }.padding(17)
+//                                }).overlay(
+//                                    RoundedRectangle(cornerRadius: 12)
+//                                        .strokeBorder(Color("SecondaryColor"), lineWidth: 2)
+//                                    // .frame(width: 166, height: 171)
+//                                )
+//                                //
+//                            }
+//                        }
+//                    }
+                    //else
+                    if(search.isEmpty){
                                 Text(OMBRELLA[0].branNtype)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                                 ScrollView(.horizontal, showsIndicators: false, content: {

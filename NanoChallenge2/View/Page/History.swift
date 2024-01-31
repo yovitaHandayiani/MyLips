@@ -54,9 +54,15 @@ struct History: View {
                         Text(Date.now.formatted(date: .complete, time: .omitted)).font(.body)
                     }else{
                         VStack(alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/){
+                            Image(systemName: "clock.arrow.circlepath")
+                                .resizable()
+                                .frame(width: 110, height: 100)
+                                .bold(false)
+                                .foregroundColor(.gray)
+                                .padding(.bottom)
                             Text("You'll find your history here").font(.callout).bold().padding(.bottom)
                             Text("You can see the color you've tried or delete them from your history").font(.caption).multilineTextAlignment(.center)
-                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height/4.1, leading: 24, bottom: 0, trailing: 0))
+                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height/4.5, leading: 24, bottom: 0, trailing: 0))
                     }
                     ScrollView(.vertical, showsIndicators: false, content: {
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){
