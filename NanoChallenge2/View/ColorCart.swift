@@ -16,6 +16,7 @@ struct ColorCart: View {
     var color : String
     var index : Int
     @State private var isFav: Bool = true
+    @EnvironmentObject var modelData: ModelData
     
     var body: some View {
         VStack{
@@ -31,29 +32,29 @@ struct ColorCart: View {
                 Spacer()
                 
                 if(brand=="OMBRELLA"){
-                    Image(systemName: isFav && OMBRELLA[index].fav ? "heart.fill" : "heart")
+                    Image(systemName: isFav && modelData.OMBRELLA[index].fav ? "heart.fill" : "heart")
                         .resizable()
                         .foregroundStyle(.pink)
                         .frame(width: 22, height: 20)
                         .onTapGesture {
-                            OMBRELLA[index].fav.toggle()
-                            isFav = OMBRELLA[index].fav
-                            print(OMBRELLA[index].fav)
+                            modelData.OMBRELLA[index].fav.toggle()
+                            isFav = modelData.OMBRELLA[index].fav
+                            print(modelData.OMBRELLA[index].fav)
                         }
-                        .onChange(of: OMBRELLA[index].fav) { newValue in
+                        .onChange(of: modelData.OMBRELLA[index].fav) { newValue in
                             isFav = newValue
                         }
                 }else if(brand=="Etude House"){
-                    Image(systemName: isFav && EtudeHouse[index].fav ? "heart.fill" : "heart")
+                    Image(systemName: isFav && modelData.EtudeHouse[index].fav ? "heart.fill" : "heart")
                         .resizable()
                         .foregroundStyle(.pink)
                         .frame(width: 22, height: 20)
                         .onTapGesture {
-                            EtudeHouse[index].fav.toggle()
-                            isFav = EtudeHouse[index].fav
-                            //print(EtudeHouse[index].fav)
+                            modelData.EtudeHouse[index].fav.toggle()
+                            isFav = modelData.EtudeHouse[index].fav
+                            print(modelData.EtudeHouse[index].fav)
                         }
-                        .onChange(of: EtudeHouse[index].fav) { newValue in
+                        .onChange(of: modelData.EtudeHouse[index].fav) { newValue in
                             isFav = newValue
                         }
                 }
@@ -92,6 +93,6 @@ struct ColorCart: View {
     }
 }
 
-#Preview {
-    ColorCart(redd : 208, greenn: 80, bluee: 74, fav: false, brand: "OMBRELLA", color: "Crush", index: 0)
-}
+//#Preview {
+//    ColorCart(redd : 208, greenn: 80, bluee: 74, fav: false, brand: "OMBRELLA", color: "Crush", index: 0)
+//}

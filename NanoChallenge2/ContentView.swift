@@ -31,23 +31,23 @@ struct ContentView : View {
                     .onAppear {
                         print(modelData.history)
                         if(brand == "OMBRELLA"){
-                            isFav = OMBRELLA[index].fav
+                            isFav = modelData.OMBRELLA[index].fav
                             
-                            if let idx = modelData.history.firstIndex(of: OMBRELLA[index].name) {
+                            if let idx = modelData.history.firstIndex(of: modelData.OMBRELLA[index].name) {
                                 modelData.history.remove(at: idx)
                                 modelData.history.append(obj)
                             }
-                            else if !modelData.history.contains(OMBRELLA[index].name) {
-                                modelData.history.append(OMBRELLA[index].name)
+                            else if !modelData.history.contains(modelData.OMBRELLA[index].name) {
+                                modelData.history.append(modelData.OMBRELLA[index].name)
                             }
                         }else{
-                            isFav = EtudeHouse[index].fav
-                            if let idx = modelData.history.firstIndex(of: EtudeHouse[index].name) {
+                            isFav = modelData.EtudeHouse[index].fav
+                            if let idx = modelData.history.firstIndex(of: modelData.EtudeHouse[index].name) {
                                 modelData.history.remove(at: idx)
                                 modelData.history.append(obj)
                             }
-                            else if !modelData.history.contains(EtudeHouse[index].name) {
-                                modelData.history.append(EtudeHouse[index].name)
+                            else if !modelData.history.contains(modelData.EtudeHouse[index].name) {
+                                modelData.history.append(modelData.EtudeHouse[index].name)
                             }
                         }
                         print(modelData.history)
@@ -59,7 +59,7 @@ struct ContentView : View {
                                 if(brand == "OMBRELLA"){
                                     //history.append(contentsOf: [obj])
                                     //OMBRELLA[index].history.toggle()
-                                    ForEach(OMBRELLA){OMBRELLA in
+                                    ForEach(modelData.OMBRELLA){OMBRELLA in
                                         Button{
                                             ARViewContainer(obj: OMBRELLA.name)
                                                 .edgesIgnoringSafeArea(.all)
@@ -84,11 +84,11 @@ struct ContentView : View {
                                         }
                                     }.padding(4)
                                         .onAppear{
-                                            isFav = OMBRELLA[index].fav
+                                            isFav = modelData.OMBRELLA[index].fav
                                         }
                                 }else if(brand == "Etude House"){
                                     //EtudeHouse[index].history.toggle()
-                                    ForEach(EtudeHouse){EtudeHouse in
+                                    ForEach(modelData.EtudeHouse){EtudeHouse in
                                         Button{
                                             ARViewContainer(obj: EtudeHouse.name)
                                                 .edgesIgnoringSafeArea(.all)
@@ -111,7 +111,7 @@ struct ContentView : View {
                                         }
                                     }.padding(4)
                                         .onAppear{
-                                            isFav = EtudeHouse[index].fav
+                                            isFav = modelData.EtudeHouse[index].fav
                                         }
                                 }
                                 
@@ -161,7 +161,7 @@ struct ContentView : View {
                         }
                         Spacer()
                         if(brand=="OMBRELLA"){
-                            Image(systemName: isFav && OMBRELLA[index].fav ? "heart.fill" : "heart")
+                            Image(systemName: isFav && modelData.OMBRELLA[index].fav ? "heart.fill" : "heart")
                                 .resizable()
                                 .foregroundStyle(.pink)
                                 .frame(width: 22, height: 20)
@@ -169,15 +169,15 @@ struct ContentView : View {
                                 .background(Color(red: 40/255, green: 40/255, blue: 40/255))
                                 .clipShape(Circle())
                                 .onTapGesture {
-                                    OMBRELLA[index].fav.toggle()
-                                    isFav = OMBRELLA[index].fav
-                                    print(OMBRELLA[index].fav)
+                                    modelData.OMBRELLA[index].fav.toggle()
+                                    isFav = modelData.OMBRELLA[index].fav
+                                    print(modelData.OMBRELLA[index].fav)
                                 }
-                                .onChange(of: OMBRELLA[index].fav) { newValue in
+                                .onChange(of: modelData.OMBRELLA[index].fav) { newValue in
                                     isFav = newValue
                                 }
                         }else if(brand=="Etude House"){
-                            Image(systemName: isFav && EtudeHouse[index].fav ? "heart.fill" : "heart")
+                            Image(systemName: isFav && modelData.EtudeHouse[index].fav ? "heart.fill" : "heart")
                                 .resizable()
                                 .foregroundStyle(.pink)
                                 .frame(width: 22, height: 20)
@@ -185,11 +185,11 @@ struct ContentView : View {
                                 .background(Color(red: 40/255, green: 40/255, blue: 40/255))
                                 .clipShape(Circle())
                                 .onTapGesture {
-                                    EtudeHouse[index].fav.toggle()
-                                    isFav = EtudeHouse[index].fav
-                                    print(EtudeHouse[index].fav)
+                                    modelData.EtudeHouse[index].fav.toggle()
+                                    isFav = modelData.EtudeHouse[index].fav
+                                    print(modelData.EtudeHouse[index].fav)
                                 }
-                                .onChange(of: EtudeHouse[index].fav) { newValue in
+                                .onChange(of: modelData.EtudeHouse[index].fav) { newValue in
                                     isFav = newValue
                                 }
                         }
@@ -326,10 +326,10 @@ struct ARViewContainer: UIViewRepresentable{
     
 }
 
-#if DEBUG
-struct ContentView_Previews : PreviewProvider {
-    static var previews: some View {
-        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0/*,history: ["Crush"]*/)
-    }
-}
-#endif
+//#if DEBUG
+//struct ContentView_Previews : PreviewProvider {
+//    static var previews: some View {
+//        ContentView(obj: "Crush", brand: "OMBRELLA", index: 0)
+//    }
+//}
+//#endif

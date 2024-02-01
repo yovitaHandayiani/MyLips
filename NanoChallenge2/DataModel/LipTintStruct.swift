@@ -18,24 +18,8 @@ struct LipTintColor: Identifiable{
     var fav: Bool
 }
 
-//struct allBrand: Identifiable{
-//    var id = UUID().uuidString
-//    var name: String
-//}
-
-//var ListOfSearch = [
-//    allBrand(name: "OMBRELLA Lip Totem Tint"),
-//    allBrand(name: "Etude House Dear My Wish Lips Talk")
-//]
-
 var OMBRELLA = [
-    LipTintColor(id: 0,
-                 branNtype: "OMBRELLA Lip Totem Tint",
-                 name: "Crush",
-                 redC: 208,
-                 greenC: 80,
-                 blueC: 74,
-                 fav: false),
+    LipTintColor(id: 0, branNtype: "OMBRELLA Lip Totem Tint", name: "Crush", redC: 208, greenC: 80, blueC: 74, fav: false),
     LipTintColor(id: 1, branNtype: "OMBRELLA Lip Totem Tint", name: "Soul", redC: 211, greenC: 83, blueC: 67, fav: false),
     LipTintColor(id: 2, branNtype: "OMBRELLA Lip Totem Tint", name: "Bond", redC: 239, greenC: 115, blueC: 86, fav: false),
     LipTintColor(id: 3, branNtype: "OMBRELLA Lip Totem Tint", name: "Hottie", redC: 210, greenC: 31, blueC: 67, fav: false),
@@ -54,7 +38,7 @@ var OMBRELLA = [
 var EtudeHouse = [
     LipTintColor(id: 0, branNtype: "Etude House Dear My Wish Lips Talk", name: "pit-a-pat", redC: 241, greenC: 62, blueC: 92, fav: false),
     LipTintColor(id: 1, branNtype: "Etude House Dear My Wish Lips Talk", name: "Breaking", redC: 165, greenC: 27, blueC: 34, fav: false),
-    LipTintColor(id: 2, branNtype: "Etude House Dear My Wish Lips Talk", name: "Burgundy", redC: 100, greenC: 13, blueC: 34, fav: false),
+    LipTintColor(id: 2, branNtype: "Etude House Dear My Wish Lips Talk", name: "Burgundy", redC: 100, greenC: 13, blueC: 34, fav: false)
 ]
 
 var notAvai = [

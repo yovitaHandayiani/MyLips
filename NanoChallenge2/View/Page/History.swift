@@ -62,14 +62,14 @@ struct History: View {
                                 .padding(.bottom)
                             Text("You'll find your history here").font(.callout).bold().padding(.bottom)
                             Text("You can see the color you've tried or delete them from your history").font(.caption).multilineTextAlignment(.center)
-                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height/4.5, leading: 24, bottom: 0, trailing: 0))
+                        }.padding(EdgeInsets(top: UIScreen.main.bounds.height/6, leading: 24, bottom: 0, trailing: 0))
                     }
                     ScrollView(.vertical, showsIndicators: false, content: {
                         LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())]){
                             
                             ForEach(modelData.history.reversed(), id: \.self){ item in
                                 //Text(item)
-                                ForEach(OMBRELLA){OMBRELLA in
+                                ForEach(modelData.OMBRELLA){OMBRELLA in
                                     if(OMBRELLA.name.contains(item)){
                                         NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
                                             ColorCart(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, fav: OMBRELLA.fav, brand: "OMBRELLA", color: OMBRELLA.name, index: OMBRELLA.id)
@@ -77,7 +77,7 @@ struct History: View {
                                     }
                                 }.padding(13)
                                 
-                                ForEach(EtudeHouse){EtudeHouse in
+                                ForEach(modelData.EtudeHouse){EtudeHouse in
                                     if(EtudeHouse.name.contains(item)){
                                         NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id/*, history: []*/)){
                                             ColorCart(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, fav: EtudeHouse.fav, brand: "Etude House", color: EtudeHouse.name, index: EtudeHouse.id)

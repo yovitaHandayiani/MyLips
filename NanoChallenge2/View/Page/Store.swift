@@ -12,6 +12,7 @@ struct Store: View {
     //    @StateObject var datavm = DataViewModel()
     @State private var search: String = ""
     @State private var showingAlert = false
+    @EnvironmentObject var modelData: ModelData
     //private var ListOfSearch: [String] = ["OMBRELLA Lip Totem Tint", "Etude House Dear My Wish Lips Talk"]
     
     var body: some View {
@@ -94,11 +95,11 @@ struct Store: View {
 //                    }
                     //else
                     if(search.isEmpty){
-                                Text(OMBRELLA[0].branNtype)
+                        Text(modelData.OMBRELLA[0].branNtype)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                                 ScrollView(.horizontal, showsIndicators: false, content: {
                                     HStack(alignment: .top){
-                                        ForEach(OMBRELLA){OMBRELLA in
+                                        ForEach(modelData.OMBRELLA){OMBRELLA in
                                             NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id/*, history: [OMBRELLA.name]*/)){
                                                 ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: true)
                                             }
@@ -113,11 +114,11 @@ struct Store: View {
                                     // .frame(width: 166, height: 171)
                                 ).padding(EdgeInsets(top: 0, leading: 0, bottom: 24, trailing: 0))
                                 
-                                Text(EtudeHouse[0].branNtype)
+                        Text(modelData.EtudeHouse[0].branNtype)
                                     .padding(EdgeInsets(top: 0, leading: 0, bottom: 12, trailing: 0))
                                 ScrollView(.horizontal, showsIndicators: false, content: {
                                     HStack(alignment: .top){
-                                        ForEach(EtudeHouse){EtudeHouse in
+                                        ForEach(modelData.EtudeHouse){EtudeHouse in
                                             NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id
                                                                                     /*, history: [EtudeHouse.name]*/
                                                                                    )){
@@ -201,6 +202,6 @@ struct Store: View {
                                     //    }
                                     //}
                                     
-#Preview {
-    Store()
-}
+//#Preview {
+//    Store()
+//}
