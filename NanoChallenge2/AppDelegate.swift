@@ -12,7 +12,6 @@ import SwiftUI
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    
     var modelData = ModelData()
     
     override init() {
