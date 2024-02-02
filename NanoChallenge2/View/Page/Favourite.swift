@@ -7,9 +7,11 @@
 
 import SwiftUI
 
+var favCount : Int = 17
+
 struct Favourite: View {
     @EnvironmentObject var modelData: ModelData
-    @State private var favCount = 17
+    //@State private var favCount = 17
         
     var body: some View {
         NavigationStack {
@@ -21,8 +23,6 @@ struct Favourite: View {
                                 if(OMBRELLA.fav == true){
                                     NavigationLink(destination: ContentView(obj: OMBRELLA.name, brand: "OMBRELLA", index: OMBRELLA.id)){
                                         ColorCart(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, fav: OMBRELLA.fav, brand: "OMBRELLA", color: OMBRELLA.name, index: OMBRELLA.id)
-                                    }.onAppear{
-                                        favCount = favCount - 1
                                     }
                                 }
                                     
@@ -32,8 +32,6 @@ struct Favourite: View {
                                 if(EtudeHouse.fav == true){
                                     NavigationLink(destination: ContentView(obj: EtudeHouse.name, brand: "Etude House", index: EtudeHouse.id/*, history: []*/)){
                                         ColorCart(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, fav: EtudeHouse.fav, brand: "Etude House", color: EtudeHouse.name, index: EtudeHouse.id)
-                                    }.onAppear{
-                                        favCount = favCount - 1
                                     }
                                 }
                             }.padding(13)

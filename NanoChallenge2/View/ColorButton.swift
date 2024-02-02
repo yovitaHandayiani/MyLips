@@ -7,14 +7,13 @@
 
 import SwiftUI
 
-var isSelected : Bool = false
-
 struct ColorButton: View {
     var redd : Double
     var greenn : Double
     var bluee : Double
     var textt : String
     var needText : Bool
+    var isSelected : Bool = false
     
     var body: some View {
         VStack{
@@ -56,6 +55,6 @@ struct ColorButton: View {
 
 struct ColorButton_Previews: PreviewProvider {
     static var previews: some View {
-        ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Color\nName", needText: true)
+        ColorButton(redd : 217, greenn: 217, bluee: 217, textt: "Color\nName", needText: true, isSelected: false)
     }
 }

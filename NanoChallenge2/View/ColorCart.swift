@@ -40,6 +40,14 @@ struct ColorCart: View {
                             modelData.OMBRELLA[index].fav.toggle()
                             isFav = modelData.OMBRELLA[index].fav
                             print(modelData.OMBRELLA[index].fav)
+                            if(isFav){
+                                favCount = favCount - 1
+                                print(favCount)
+                            }
+                            if(!isFav){
+                                favCount = favCount + 1
+                                print(favCount)
+                            }
                         }
                         .onChange(of: modelData.OMBRELLA[index].fav) { newValue in
                             isFav = newValue
@@ -53,6 +61,14 @@ struct ColorCart: View {
                             modelData.EtudeHouse[index].fav.toggle()
                             isFav = modelData.EtudeHouse[index].fav
                             print(modelData.EtudeHouse[index].fav)
+                            if(isFav){
+                                favCount = favCount - 1
+                                print(favCount)
+                            }
+                            if(!isFav){
+                                favCount = favCount + 1
+                                print(favCount)
+                            }
                         }
                         .onChange(of: modelData.EtudeHouse[index].fav) { newValue in
                             isFav = newValue

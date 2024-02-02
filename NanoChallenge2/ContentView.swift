@@ -63,6 +63,7 @@ struct ContentView : View {
                                         Button{
                                             ARViewContainer(obj: OMBRELLA.name)
                                                 .edgesIgnoringSafeArea(.all)
+                                            obj = OMBRELLA.name
                                             print(obj)
                                             print(OMBRELLA.name)
                                             index = OMBRELLA.id
@@ -80,7 +81,11 @@ struct ContentView : View {
                                             //OMBRELLA.history.toggle()
                                             //print(history)
                                         }label: {
-                                            ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: false)
+                                            if(obj.contains(OMBRELLA.name)){
+                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: false, isSelected: true)
+                                            }else{
+                                                ColorButton(redd: OMBRELLA.redC, greenn: OMBRELLA.greenC, bluee: OMBRELLA.blueC, textt: OMBRELLA.name, needText: false, isSelected: false)
+                                            }
                                         }
                                     }.padding(4)
                                         .onAppear{
@@ -92,6 +97,7 @@ struct ContentView : View {
                                         Button{
                                             ARViewContainer(obj: EtudeHouse.name)
                                                 .edgesIgnoringSafeArea(.all)
+                                            obj = EtudeHouse.name
                                             print(EtudeHouse.name)
                                             index = EtudeHouse.id
                                             
@@ -107,7 +113,11 @@ struct ContentView : View {
                                             }
                                             //EtudeHouse.history.toggle()
                                         }label: {
-                                            ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: false)
+                                            if(obj.contains(EtudeHouse.name)){
+                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: false, isSelected: true)
+                                            }else{
+                                                ColorButton(redd: EtudeHouse.redC, greenn: EtudeHouse.greenC, bluee: EtudeHouse.blueC, textt: EtudeHouse.name, needText: false, isSelected: false)
+                                            }
                                         }
                                     }.padding(4)
                                         .onAppear{
@@ -172,6 +182,14 @@ struct ContentView : View {
                                     modelData.OMBRELLA[index].fav.toggle()
                                     isFav = modelData.OMBRELLA[index].fav
                                     print(modelData.OMBRELLA[index].fav)
+                                    if(isFav){
+                                        favCount = favCount - 1
+                                        print(favCount)
+                                    }
+                                    if(!isFav){
+                                        favCount = favCount + 1
+                                        print(favCount)
+                                    }
                                 }
                                 .onChange(of: modelData.OMBRELLA[index].fav) { newValue in
                                     isFav = newValue
@@ -188,6 +206,14 @@ struct ContentView : View {
                                     modelData.EtudeHouse[index].fav.toggle()
                                     isFav = modelData.EtudeHouse[index].fav
                                     print(modelData.EtudeHouse[index].fav)
+                                    if(isFav){
+                                        favCount = favCount - 1
+                                        print(favCount)
+                                    }
+                                    if(!isFav){
+                                        favCount = favCount + 1
+                                        print(favCount)
+                                    }
                                 }
                                 .onChange(of: modelData.EtudeHouse[index].fav) { newValue in
                                     isFav = newValue
