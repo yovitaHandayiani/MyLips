@@ -56,7 +56,7 @@ struct Favourite: View {
                 
             }.navigationBarTitle("Favourite")
         }
-        .toolbar(.visible, for: .tabBar)
+        //.toolbar(.visible, for: .tabBar)
     }
 }
 
