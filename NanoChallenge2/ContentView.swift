@@ -280,11 +280,9 @@ struct ContentView : View {
                 }
             }
             .toolbar(.hidden, for: .tabBar)
-//        ScrollView{
-//            History(modelData: modelData)
-//        }
-        //}
-        
+            .onAppear{
+                UIApplication.shared.windows.first?.rootViewController?.navigationController?.popToRootViewController(animated: true)
+            }
     }
 }
 
